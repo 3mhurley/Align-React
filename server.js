@@ -17,7 +17,11 @@ db.on("error", function(error) {
     console.log("Database error:", error);
 });
 
+
+//routes
+
+
 //port 3000
 app.listen(3000, function() {
     console.log("App running on port 3000");
-})
+});
