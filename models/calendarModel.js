@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 //schema constructor
-var UserSchema = new Schema({
+var CalendarSchema = new Schema({
 
     username: {
         type: String,
@@ -22,7 +22,7 @@ var UserSchema = new Schema({
 });
 
 //
-var User = mongoose.model("User", UserSchema);
+var Calendar = mongoose.model("Calendar", CalendarSchema);
 
 //export user model
-module.exports = User;
+module.exports = Calendar;
