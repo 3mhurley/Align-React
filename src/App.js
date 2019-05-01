@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CalApp from './components/calendar/Calendar';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           Learn React
         </a>
       </header>
+    </div>
+    <div className="Cal">
+      < CalApp / >
     </div>
   );
 }
