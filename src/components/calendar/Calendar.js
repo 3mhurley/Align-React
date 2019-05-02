@@ -61,6 +61,7 @@ export default class DemoApp extends React.Component {
   }
 
   handleDateClick = (arg) => {
+    // eslint-disable-next-line no-restricted-globals
     if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
       this.setState({ // add new event data
         calendarEvents: this.state.calendarEvents.concat({ // creates a new array

@@ -1,22 +1,30 @@
 //dependencies 
-var express = require("express");
-var mongojs = require("mongojs");
+const express = require("express");
+const mongojs = require("mongojs");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
 
 //initialize express
-var app = express();
+const app = express();
 
 //database configuration
-var databaseUrl = "";
-var collections = [""];
+const databaseUrl = "";
+const collections = [""];
 
 //use mongojs to hook the database to the db variable 
-var db = mongojs(databaseUrl, collections);
+const db = mongojs(databaseUrl, collections);
 
 //log issues
 db.on("error", function(error) {
     console.log("Database error:", error);
 });
 
+// (optional) only made for logging and
+// bodyParser, parses the request body to be a readable json format
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(logger("dev"));
 
 //routes
 
