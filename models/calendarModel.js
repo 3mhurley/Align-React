@@ -1,24 +1,29 @@
 var mongoose = require("mongoose");
-
 var Schema = mongoose.Schema;
 
 //schema constructor
 var CalendarSchema = new Schema({
 
-    username: {
+    firstname: {
         type: String,
         trim: true,
-        required: "Username is Required"
+    },
+
+    lastname: {
+        type: String,
+        trim: true,
     },
 
     email: {
         type: String,
         unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-    }
+    },
 
-    //add additional fields here
-
+    datePicker: {
+        type: integer,
+        trim: true,
+    },
 });
 
 //
