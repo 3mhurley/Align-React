@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import Callback from './Callback';
 import {Route} from 'react-router-dom';
@@ -5,6 +6,15 @@ import {Route} from 'react-router-dom';
 import './App.css';
 import CalApp from './components/calendar/Calendar';
 import NavBar from './components/NavBar/NavBar';
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+
+import Calendar from "./pages/Livecalpage";
+// import Home from "";
+// import Home from "";
+>>>>>>> d7affc8503fd9eff36cc62c6d3ef0fc97fe4069f
 
 
 class App extends Component {
@@ -36,6 +46,17 @@ class App extends Component {
     // </div>
     );
   }
+    <Router>
+      <div>
+        <Switch>
+          {/* <Route exact pat="/" component={Home} /> */}
+          {/* <Route exact pat="/info" component={Info} /> */}
+          <Route exact pat='/calendar' component={Calendar} />
+          {/* <Route exact pat="/calendar/:id" component={CalApp} /> */}
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
