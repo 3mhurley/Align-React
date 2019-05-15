@@ -24,7 +24,7 @@ function App() {
     //   </header>
     // </div>
     <div className="App">
-      < CalApp / >
+      < CalApp />
     </div>
   );
 }
