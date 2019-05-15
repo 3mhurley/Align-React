@@ -1,31 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import CalApp from './components/calendar/Calendar';
-import Navbar from './components/Navbar';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
+import Calendar from "./pages/Livecalpage";
+// import Home from "";
+// import Home from "";
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-    <div className="App">
-      < CalApp />
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          {/* <Route exact pat="/" component={Home} /> */}
+          {/* <Route exact pat="/info" component={Info} /> */}
+          <Route exact pat='/calendar' component={Calendar} />
+          {/* <Route exact pat="/calendar/:id" component={CalApp} /> */}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
