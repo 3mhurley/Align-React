@@ -1,6 +1,6 @@
 //dependencies 
 const express = require("express");
-const mongojs = require("mongojs");
+// const mongojs = require("mongojs");
 // const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 // const logger = require("morgan");
@@ -9,21 +9,11 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
+// const logger = require("morgan");
+const routes = require('./routes');
 
 //initialize express
 const app = express();
-
-//database configuration
-const databaseUrl = "";
-const collections = [""];
-
-//use mongojs to hook the database to the db variable 
-const db = mongojs(databaseUrl, collections);
-
-//log issues
-db.on("error", function(error) {
-    console.log("Database error:", error);
-});
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
@@ -31,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(logger("dev"));
 
-// App security with Helemt
+// App security with Helmet
 app.use(helmet());
 
 // Enable all CORS requests
@@ -55,10 +45,15 @@ const checkJwt = jwt({
     algorithms: ['RS256']
 });
 
-//routes
-
+app.use(routes);
 
 //port 3000
 app.listen(3000, function() {
     console.log("App running on port 3000");
 });
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') { // throw errors in development to force you to fix them
+    process.on('unhandledRejection', error => new Error(error));
+} else { // only log errors in prod
+    process.on('unhandledRejection', error => console.error(error));
+}
