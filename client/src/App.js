@@ -11,10 +11,10 @@ function App() {
     <Router>
       <div>
         <Switch>
-          {/* <Route exact pat="/" component={Home} /> */}
-          {/* <Route exact pat="/info" component={Info} /> */}
-          <Route exact pat='/calendar' component={Calendar} />
-          {/* <Route exact pat="/calendar/:id" component={CalApp} /> */}
+          {/* <Route exact path="/" component={Home} /> */}
+          {/* <Route exact path="/info" component={Info} /> */}
+          <Route exact path='/calendar' component={Calendar} />
+          {/* <Route exact path="/calendar/:id" component={CalApp} /> */}
         </Switch>
       </div>
     </Router>
