@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CalApp from './components/calendar/Calendar';
+import Navbar from './components/Navbar';
+
 
 function App() {
   return (
