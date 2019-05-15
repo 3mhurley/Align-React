@@ -1,9 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Callback from './Callback';
+import {Route} from 'react-router-dom';
+// import logo from './logo.svg';
 import './App.css';
 import CalApp from './components/calendar/Calendar';
+import NavBar from './components/NavBar/NavBar';
 
-function App() {
+
+class App extends Component {
+  render() {
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -21,10 +26,16 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <div className="App">
-      < CalApp / >
+    <div>
+      <NavBar />
+      <CalApp />
+      <Route exact path='/callback' component={Callback}/>
     </div>
-  );
+    // <div className="App">
+    //   < CalApp / >
+    // </div>
+    );
+  }
 }
 
 export default App;
