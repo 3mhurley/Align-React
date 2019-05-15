@@ -21,7 +21,7 @@ var CalendarSchema = new Schema({
     },
 
     datePicker: {
-        type: integer,
+        type: Number,
         trim: true,
     },
 });

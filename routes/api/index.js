@@ -3,8 +3,8 @@ const scheduleRoutes = require("./scheduleRoutes");
 const calendarRoutes = require("./calendarRoutes");
 
 //schedule routes
-router.use("/scheduleRoutes");
-router.use("/calendarRoutes");
+// router.use("/schedules", scheduleRoutes);
+router.use("/calendars", calendarRoutes);
 
 //calendar routes
 

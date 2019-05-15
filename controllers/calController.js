@@ -6,9 +6,9 @@ module.exports = {
     //owner calendar
     findById: function(req, res) {
         db.Calendar
-            .findById(req.body)
+            .findById(req.body._id)
             //what does this do?
-            .then(dbModel => res.json(dbModel))
+            .then(dbDoc => res.json(dbDoc))
             .catch(err => res.status(422).json(err));
     }, 
 
@@ -21,7 +21,7 @@ module.exports = {
 
     update: function(req, res) {
         db.Calendar
-            .findOneAndUpdate({ _id: req.body }, req.body)
+            .findOneAndUpdate({ _id: req.body }, req.body, { new: true })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
