@@ -2,7 +2,7 @@ const router = require("express").Router();
 const calController = require("../../controllers/calController");
 
 router.route("/")
-    .get(calController.findById)
+    // .get(calController.findById)
     .post(calController.create);
 
 router.route('/:id')
