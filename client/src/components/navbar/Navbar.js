@@ -8,7 +8,7 @@ import AboutButton from './AboutButton';
 import ContactButton from './ContactButton';
 
 
-
+//styles
 const styles = {
   root: {
     flexGrow: 1,
