@@ -1,27 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    marginLeft: 180
   },
   input: {
     display: 'none',
   },
 });
 
-const CreateButton = props => {
-  const { classes } = props;
-  return (
-    <div>
-      <Button variant="contained" className={classes.button}>
-        CREATE CALENDAR  
-      </Button>
-   
-    </div>
-  );
+
+class CreateButton extends Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+            <Button variant="contained" className={classes.button}>
+             CREATE CALENDAR
+             </Button>
+      </div>
+       );
+  }
+
 }
 
 CreateButton.propTypes = {

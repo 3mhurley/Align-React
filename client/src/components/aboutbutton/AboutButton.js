@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -12,13 +12,15 @@ const styles = theme => ({
   },
 });
 
-const AboutButton = props => {
-  const { classes } = props;
-  return (
-    <div>
-      <Button className={classes.button}>About Us</Button>
-    </div>
-  );
+class AboutButton extends Component {
+  render() {
+    const { classes } = this.props
+    return (
+      <div>
+        <Button className={classes.button}>About Us</Button>
+      </div>
+    );
+  }
 }
 
 AboutButton.propTypes = {

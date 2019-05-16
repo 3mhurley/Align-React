@@ -1,13 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import JoinButton from '../joinbutton/JoinButton';
 import CreateButton from '../createbutton/CreateButton';
-
-
-
-
 
 const styles = theme => ({
   root: {
@@ -21,25 +17,28 @@ const styles = theme => ({
   }
 });
 
-const FrontMain = props => {
-  const { classes } = props;
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-         <h1>Align</h1>
-        </Grid>
-          <Grid item xs={6} className="createButton">
-          <CreateButton />
+class FrontMain extends Component {
+  render() {
+  const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <h1>Align</h1>
           </Grid>
-        <Grid item xs={6} className="joinButton">
-          <JoinButton />
-        </Grid>     
+          <Grid item xs={6} className="createButton">
+            <CreateButton />
+          </Grid>
+          <Grid item xs={6} className="joinButton">
+            <JoinButton />
+          </Grid>     
       </Grid>
     </div>
-    
-  );
+
+    );
+
+  }
 }
 
 FrontMain.propTypes = {

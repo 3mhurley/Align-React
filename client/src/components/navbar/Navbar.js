@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import AboutButton from '../aboutbutton/AboutButton'
-import ContactButton from '../contactbutton/ContactButton'
+import AboutButton from './AboutButton';
+import ContactButton from './ContactButton';
+
 
 
 const styles = {
@@ -19,31 +20,29 @@ const styles = {
     color: 'white',
     background: '#4794B3',
   },
-  // menuButton: {
-  //   marginLeft: -12,
-  //   marginRight: 20,
-  // },
  
 };
 
-const Navbar = props => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.root} >
-        <Toolbar>
-          <Typography variant="h6" className={classes.grow}>
-            Simple Calendar
-            Sharing...
+class Navbar extends Component {
+  render() {
+  const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+          <AppBar position="static" className={classes.root} >
+             <Toolbar>
+              <Typography variant="h6" className={classes.grow}>
+                Simple Calendar
+                Sharing...
             
-            Period.
-          </Typography>
-          <AboutButton />
-          <ContactButton />
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+                Period.
+              </Typography>
+              <AboutButton />
+              <ContactButton />
+            </Toolbar>
+           </AppBar>
+      </div>
+    );
+  }
 }
 
 Navbar.propTypes = {
