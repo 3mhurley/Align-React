@@ -12,20 +12,17 @@ const styles = theme => ({
   },
 });
 
-const CreateButton = props => {
+const ContactButton = props => {
   const { classes } = props;
   return (
     <div>
-      <Button variant="contained" className={classes.button}>
-        CREATE CALENDAR  
-      </Button>
-   
+      <Button className={classes.button}>Contact Us</Button>
     </div>
   );
 }
 
-CreateButton.propTypes = {
+ContactButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CreateButton);
+export default withStyles(styles)(ContactButton);

@@ -12,7 +12,7 @@ const styles = theme => ({
   },
 });
 
-function ContainedButtons(props) {
+const JoinButton = props => {
   const { classes } = props;
   return (
     <div>
@@ -24,8 +24,8 @@ function ContainedButtons(props) {
   );
 }
 
-ContainedButtons.propTypes = {
+JoinButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContainedButtons);
+export default withStyles(styles)(JoinButton);
