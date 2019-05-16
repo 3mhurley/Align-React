@@ -7,7 +7,6 @@ module.exports = {
     findById: function(req, res) {
         db.Calendar
             .findById(req.body._id)
-            //what does this do?
             .then(dbDoc => res.json(dbDoc))
             .catch(err => res.status(422).json(err));
     }, 

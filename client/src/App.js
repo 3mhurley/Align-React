@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import Calendar from "./pages/Livecalpage";
+import Calendar from "./pages/livecalpage";
 // import Home from "";
 // import Home from "";
 
