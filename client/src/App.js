@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Calendar from "./pages/livecalpage";
 
 // import Home from "";
+import FrontMain from "./components/main/FrontMain";
 // import Home from "";
 
 function App () {
@@ -16,10 +17,10 @@ function App () {
     <Router>
       <div>
         <Switch>
-          {/* <Route exact pat="/" component={Home} /> */}
-          {/* <Route exact pat="/info" component={Info} /> */}
-          <Route exact pat='/calendar' component={Calendar} />
-          {/* <Route exact pat="/calendar/:id" component={CalApp} /> */}
+          <Route exact path="/" component={FrontMain} />
+          {/* <Route exact path="/info" component={Info} /> */}
+          <Route exact path='/calendar' component={Calendar} />
+          {/* <Route exact path="/calendar/:id" component={CalApp} /> */}
         </Switch>
       </div>
     </Router>

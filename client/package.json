@@ -15,7 +15,10 @@
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+<<<<<<< HEAD
     "react-router": "^5.0.0",
+=======
+>>>>>>> c19f1780919a32758d78772d815e2af80454e8d4
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0"
   },
