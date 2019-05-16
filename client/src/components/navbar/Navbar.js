@@ -1,53 +1,52 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import AboutButton from './AboutButton';
+import ContactButton from './ContactButton';
 
 
+//styles
 const styles = {
   root: {
     flexGrow: 1,
+    background: '#4794B3',
+    color: 'white',
   },
   grow: {
     flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-  palette: {
-    primary: {
-      main: '#1de9b6',
-    },
+    color: 'white',
+    background: '#4794B3',
   },
  
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Simple Calendar
-            Sharing...
+class Navbar extends Component {
+  render() {
+  const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+          <AppBar position="static" className={classes.root} >
+             <Toolbar>
+              <Typography variant="h6" className={classes.grow}>
+                Simple Calendar
+                Sharing...
             
-            Period.
-          </Typography>
-          <Button color="inherit">About Us</Button>
-          <Button color="inherit">Contact</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+                Period.
+              </Typography>
+              <AboutButton />
+              <ContactButton />
+            </Toolbar>
+           </AppBar>
+      </div>
+    );
+  }
 }
 
-ButtonAppBar.propTypes = {
+Navbar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(Navbar);

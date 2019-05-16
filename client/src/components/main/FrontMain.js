@@ -1,49 +1,48 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import JoinButton from './JoinButton';
-import CreateButton from './CreateButton';
-
-
+import JoinButton from '../joinbutton/JoinButton';
+import CreateButton from '../createbutton/CreateButton';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 10,
+    background: '#4794B3',
     textAlign: 'center',
-    color: theme.palette.text.primary,
-    marginTop: theme.spacing.unit * 20    
-  },
-
-  button: {
-    marginLeft: theme.spacing.unit * 20,
-    marginRight: theme.spacing.unit * 20
+    paddingTop: 250,
+    paddingBottom: 500,
+    marginTop: 3,
+    color: 'white',
   }
 });
 
-function CenteredGrid(props) {
-  const { classes } = props;
 
-  return (
-    <div className={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}><h1>Align</h1>
-          <JoinButton />
-          <CreateButton />
-          </Paper>
-        </Grid>
+class FrontMain extends Component {
+  render() {
+  const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <h1>Align</h1>
+          </Grid>
+          <Grid item xs={6} className="createButton">
+            <CreateButton />
+          </Grid>
+          <Grid item xs={6} className="joinButton">
+            <JoinButton />
+          </Grid>     
       </Grid>
     </div>
-  );
+
+    );
+
+  }
 }
 
-CenteredGrid.propTypes = {
+FrontMain.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CenteredGrid);
+export default withStyles(styles)(FrontMain);

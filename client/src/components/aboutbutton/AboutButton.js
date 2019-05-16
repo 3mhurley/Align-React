@@ -5,28 +5,26 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   button: {
-    marginRight: 180, 
+    margin: theme.spacing.unit,
   },
   input: {
     display: 'none',
   },
 });
 
-class JoinButton extends Component {
+class AboutButton extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
-         <div>
-            <Button variant="contained" className={classes.button}>
-             JOIN CALENDAR
-            </Button>
-        </div>
-      );
-    }
+      <div>
+        <Button className={classes.button}>About Us</Button>
+      </div>
+    );
+  }
 }
 
-JoinButton.propTypes = {
+AboutButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(JoinButton);
+export default withStyles(styles)(AboutButton);
