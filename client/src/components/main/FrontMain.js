@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import JoinButton from '../joinbutton/JoinButton';
 import CreateButton from '../createbutton/CreateButton';
+import Navbar from '../navbar/Navbar';
 
 const styles = theme => ({
   root: {
@@ -22,6 +23,10 @@ class FrontMain extends Component {
   render() {
   const { classes } = this.props;
     return (
+      <div>
+      <div>
+        <Navbar />
+      </div>
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
@@ -34,6 +39,7 @@ class FrontMain extends Component {
             <JoinButton />
           </Grid>     
       </Grid>
+    </div>
     </div>
 
     );
