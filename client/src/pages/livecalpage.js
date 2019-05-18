@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import CalApp from "../components/calendar/Calendar";
-import CalApp from "../components/calendar";
+// import CalApp from "../components/calendar";
 
 class Calendar extends Component {
 
