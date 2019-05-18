@@ -1,12 +1,10 @@
-import React, {Component} from './node_modules/react';
-import PropTypes from './node_modules/prop-types';
-import { withStyles } from './node_modules/@material-ui/core/styles';
-import Grid from './node_modules/@material-ui/core/Grid';
-import JoinButton from '../JoinButton/JoinButton';
-import CreateButton from '../CreateButton/CreateButton';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import CreateModal from "../CreateModal/CreateModal"
 import JoinModal from "../JoinModal/JoinModal"
-import Navbar from '../NavBar/NavBar';
+import Navbar from '../Navbar/Navbar';
 
 const styles = theme => ({
   root: {
@@ -34,16 +32,16 @@ class FrontMain extends Component {
           <Grid item xs={12}>
             <h1>Align</h1>
           </Grid>
-          <Grid item xs={6} className="createButton">
-            {/* <CreateButton /> */}
+          <Grid item xs={6} className="createModal">
+            {/* <CreateModal /> */}
               <CreateModal />
 
           </Grid>
-          <Grid item xs={6} className="joinButton">
-            {/* <JoinButton /> */}
+          <Grid item xs={6} className="joinModal">
+            {/* <JoinModal /> */}
               <JoinModal />
 
-          </Grid>     
+          </Grid>
       </Grid>
     </div>
     </div>
