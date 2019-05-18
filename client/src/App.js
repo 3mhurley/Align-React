@@ -6,10 +6,12 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Calendar from "./pages/livecalpage";
+// import Calendar from "./pages/livecalpage";
 
 // import Home from "";
 import FrontMain from "../src/components/main/Main";
+import Calendar from "./pages/LiveCalendar";
+import Main from "../src/components/main/Main";
 // import Home from "";
 
 function App () {

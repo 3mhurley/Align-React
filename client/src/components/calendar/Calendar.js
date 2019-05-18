@@ -53,7 +53,6 @@ export default class CalApp extends React.Component {
 						ref={this.calendarComponentRef}
 						weekends={this.state.calendarWeekends}
 						events={this.state.calendarEvents}
-						dateClick={this.handleDateClick}
 						select={this.handleSelect}
 					/>
 				</div>
@@ -70,19 +69,6 @@ export default class CalApp extends React.Component {
 				start: arg.start,
 				end: arg.end
 				// editable: true
-			})
-		});
-		console.log(arg);
-	};
-
-	handleDateClick = arg => {
-		this.setState({
-			// add new event data
-			calendarEvents: this.state.calendarEvents.concat({
-				// creates a new array
-				title: "New Event",
-				start: arg.date,
-				allDay: arg.allDay
 			})
 		});
 		console.log(arg);
