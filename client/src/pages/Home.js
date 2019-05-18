@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar";
 import Main from "../components/FrontMain";
 import CreateBtn from "../components/CreateButton";
 import JoinBtn from "../components/JoinButton";
