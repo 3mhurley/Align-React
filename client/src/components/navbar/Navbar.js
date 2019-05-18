@@ -1,9 +1,9 @@
-import React, {Component} from './node_modules/react';
-import PropTypes from './node_modules/prop-types';
-import { withStyles } from './node_modules/@material-ui/core/styles';
-import AppBar from './node_modules/@material-ui/core/AppBar';
-import Toolbar from './node_modules/@material-ui/core/Toolbar';
-import Typography from './node_modules/@material-ui/core/Typography';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
 
@@ -20,7 +20,7 @@ const styles = {
     color: 'white',
     background: '#4794B3',
   },
- 
+
 };
 
 class Navbar extends Component {
@@ -33,7 +33,7 @@ class Navbar extends Component {
               <Typography variant="h6" className={classes.grow}>
                 Simple Calendar
                 Sharing...
-            
+
                 Period.
               </Typography>
               <AboutButton />
