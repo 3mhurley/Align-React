@@ -9,9 +9,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Calendar from "./pages/livecalpage";
 
 // import Home from "";
-import FrontMain from "../src/components/main/Main";
+// import from "../src/components/main/Main";
 import Calendar from "./pages/LiveCalendar";
-import Main from "../src/components/main/Main";
+import FrontMain from "../src/components/main/Main";
 // import Home from "";
 
 function App () {
