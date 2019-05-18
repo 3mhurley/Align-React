@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
+import DemoButton from '../DemoButton/DemoButton'
 
 
 //styles
@@ -38,6 +39,7 @@ class Navbar extends Component {
               </Typography>
               <AboutButton />
               <ContactButton />
+              <DemoButton />
             </Toolbar>
            </AppBar>
       </div>
