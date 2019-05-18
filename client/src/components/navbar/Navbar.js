@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import AboutButton from './AboutButton';
-import ContactButton from './ContactButton';
+import AboutButton from '../aboutbutton/AboutButton';
+import ContactButton from '../contactbutton/ContactButton';
 
 
 //styles
