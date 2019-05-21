@@ -1,11 +1,11 @@
-import React from './node_modules/react';
-import Button from './node_modules/@material-ui/core/Button';
-import TextField from './node_modules/@material-ui/core/TextField';
-import Dialog from './node_modules/@material-ui/core/Dialog';
-import DialogActions from './node_modules/@material-ui/core/DialogActions';
-import DialogContent from './node_modules/@material-ui/core/DialogContent';
-import DialogContentText from './node_modules/@material-ui/core/DialogContentText';
-import DialogTitle from './node_modules/@material-ui/core/DialogTitle';
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class JoinModal extends React.Component {
     state = {
@@ -31,14 +31,26 @@ class JoinModal extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Join A Calendar</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            To subscribe to this website, please enter your email address here. We will send
-                            updates occasionally.
+                            If you have been invited to join a calendar enter your information.
             </DialogContentText>
                         <TextField
-                            autoFocus
+                            margin='dense'
+                            id='cal-id'
+                            label='Calendar ID'
+                            type='string'
+                            fullWidth
+                        />
+                        <TextField
+                            margin='dense'
+                            id='guest-name'
+                            label='Guest Name'
+                            type='string'
+                            fullWidth
+                        />
+                        <TextField
                             margin="dense"
                             id="name"
                             label="Email Address"
@@ -47,11 +59,11 @@ class JoinModal extends React.Component {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleClose} color="secondary">
                             Cancel
             </Button>
                         <Button onClick={this.handleClose} color="primary">
-                            Subscribe
+                            Submit
             </Button>
                     </DialogActions>
                 </Dialog>
@@ -60,4 +72,4 @@ class JoinModal extends React.Component {
     }
 }
 
-export default JoinModal;
+export default (JoinModal);

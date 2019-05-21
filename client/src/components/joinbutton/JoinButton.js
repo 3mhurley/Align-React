@@ -1,11 +1,11 @@
-import React, {Component} from './node_modules/react';
-import PropTypes from './node_modules/prop-types';
-import { withStyles } from './node_modules/@material-ui/core/styles';
-import Button from './node_modules/@material-ui/core/Button';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   button: {
-    marginRight: 180, 
+    marginRight: 180,
   },
   input: {
     display: 'none',
