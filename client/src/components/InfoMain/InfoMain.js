@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-// import { Hidden } from '@material-ui/core';
+import "./info.scss";
+import InfoDemoButton from '../InfoDemoButton/InfoDemoButton';
+
 
 const styles = theme => ({
   
@@ -16,6 +18,7 @@ const styles = theme => ({
     marginTop: 3,
     color: 'white',
     overflow: 'hidden',
+  
     
   },
   paper: {
@@ -31,20 +34,19 @@ function InfoMain(props) {
   const { classes } = props;
 
   return (
-    <div className = {classes.main}>
+    <body>
          <div className={classes.root}>
             <Grid container spacing={24}>
                 <Grid item xs={12}>
-                 <Paper className={classes.paper}><p>You would think scheduling a meeting would be simple these days with all the technology we have at our finger tips.</p>
-                <p>We were tired of IMing, taking polls, and having meetings about meetings. So, we created a simple calendar sharing platform to allow the masses to align their schedules easily. Set your availability, share your calendar, have your meeting. Period.</p></Paper>
+                 <Paper className={classes.paper} id="mainInfo"><p className="text">You would think scheduling a meeting would be simple these days with all the technology we have at our finger tips.</p>
+                <p className="text">We were tired of IMing, taking polls, and having meetings about meetings. So, we created a simple calendar sharing platform to allow the masses to align their schedules easily. Set your availability, share your calendar, have your meeting. Period.</p></Paper>
             </Grid>
-            <Grid item xs={6}>
+            {/* <Grid item xs={12}>
                 <Paper className={classes.paper}>xs=6</Paper>
+            </Grid> */}
+            <Grid item xs={12} id="buttonDemo"><InfoDemoButton />
             </Grid>
-            <Grid item xs={6}>
-                <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={3}>
+            {/* <Grid item xs={3}>
                 <Paper className={classes.paper}>xs=3</Paper>
             </Grid>
             <Grid item xs={3}>
@@ -55,10 +57,10 @@ function InfoMain(props) {
             </Grid>
             <Grid item xs={3}>
                 <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
+            </Grid> */}
         </Grid>
     </div>
-    </div>
+    </body>
   );
 }
 

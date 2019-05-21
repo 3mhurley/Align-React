@@ -6,7 +6,7 @@ import Calendar from "./pages/LiveCalendar";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Demo from "./pages/Demo";
-import Contact from "./pages/Contact"
+// import Contact from "./pages/Contact"
 
 // import Home from "";
 
