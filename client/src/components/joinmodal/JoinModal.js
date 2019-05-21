@@ -31,14 +31,26 @@ class JoinModal extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Join A Calendar</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            To subscribe to this website, please enter your email address here. We will send
-                            updates occasionally.
+                            If you have been invited to join a calendar enter your information.
             </DialogContentText>
                         <TextField
-                            autoFocus
+                            margin='dense'
+                            id='cal-id'
+                            label='Calendar ID'
+                            type='string'
+                            fullWidth
+                        />
+                        <TextField
+                            margin='dense'
+                            id='guest-name'
+                            label='Guest Name'
+                            type='string'
+                            fullWidth
+                        />
+                        <TextField
                             margin="dense"
                             id="name"
                             label="Email Address"
@@ -47,11 +59,11 @@ class JoinModal extends React.Component {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleClose} color="secondary">
                             Cancel
             </Button>
                         <Button onClick={this.handleClose} color="primary">
-                            Subscribe
+                            Submit
             </Button>
                     </DialogActions>
                 </Dialog>
@@ -60,4 +72,4 @@ class JoinModal extends React.Component {
     }
 }
 
-export default JoinModal;
+export default (JoinModal);

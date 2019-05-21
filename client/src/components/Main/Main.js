@@ -6,14 +6,16 @@ import CreateModal from "../CreateModal/CreateModal"
 import JoinModal from "../JoinModal/JoinModal"
 
 const styles = theme => ({
+ 
   root: {
     flexGrow: 1,
     background: '#4794B3',
     textAlign: 'center',
     paddingTop: 250,
-    paddingBottom: 500,
+    paddingBottom: 429,
     marginTop: 3,
     color: 'white',
+    overflow: 'hidden',
     
   }
 });
@@ -23,7 +25,7 @@ class FrontMain extends Component {
   render() {
   const { classes } = this.props;
     return (
-      <div>
+      <div className ={classes.main}>
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
