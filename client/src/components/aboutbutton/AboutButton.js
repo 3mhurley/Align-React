@@ -17,7 +17,7 @@ class AboutButton extends Component {
 		const { classes } = this.props;
 		return (
 			<div>
-				<Button className={classes.button}>About Us</Button>
+				<Button className={classes.button}>About</Button>
 			</div>
 		);
 	}

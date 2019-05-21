@@ -18,7 +18,7 @@ class ContactButton extends Component {
   const { classes } = this.props;
     return (
       <div>
-          <Button className={classes.button}>Contact Us</Button>
+          <Button className={classes.button}>Contact</Button>
     </div>
     );
   }
