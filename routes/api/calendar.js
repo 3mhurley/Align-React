@@ -1,13 +1,15 @@
 const router = require("express").Router();
-const calendar = require("../../controllers/calendar.js");
+const calendar = require("../../controllers/calendar");
 
+// matches with "/api/newcal"
 router.route("/newcal")
-    // .get(calController.findById)
+    .get(calendar.findAll)
     .post(calendar.create);
 
+// matches with "/api/newcal:id"
 router.route('/:id')
-
-    // .put(calController.update)
-    // .delete(calController.destroy);
+    .get(calendar.findById)
+    .put(calendar.update)
+    .delete(calendar.remove);
 
 module.exports = router;

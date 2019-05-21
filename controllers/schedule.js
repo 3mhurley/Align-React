@@ -7,7 +7,7 @@ module.exports = {
     findAll: function(req, res) {
         db.Schedule
             .find(req.query)
-            //sort by most popular here?
+            .sort({ date: -1 })
             .sort({ })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

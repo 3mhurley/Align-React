@@ -1,15 +1,12 @@
 const router = require("express").Router();
-const schedule = require("../../controllers/schedule.js");
+const schedule = require("../../controllers/schedule");
 
-//renders calendar based on id 
+// matches with "/api/:id"
 router.route('/:id')
     .get(calendar.findById);
 
-//sends events to db
+// matches with "/api/"
 router.route("/")
     .post(schedule.create);
-
-    // .put(calController.update)
-    // .delete(calController.destroy);
-
+    
 module.exports = router;
