@@ -1,11 +1,12 @@
 const router = require("express").Router();
-const calController = require("../../controllers/calendar.js");
+const calendar = require("../../controllers/calendar.js");
 
 router.route("/")
     // .get(calController.findById)
-    .post(calController.create);
+    .post(calendar.create);
 
 router.route('/:id')
+    
     // .put(calController.update)
     // .delete(calController.destroy);
 
