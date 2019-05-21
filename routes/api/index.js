@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const scheduleRoutes = require("./scheduleRoutes");
-const calendarRoutes = require("./calendarRoutes");
+const scheduleRoutes = require("./schedule");
+const calendarRoutes = require("./calendar");
 
 //schedule routes
 // router.use("/schedules", scheduleRoutes);
