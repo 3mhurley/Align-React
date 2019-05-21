@@ -8,7 +8,6 @@ module.exports = {
         db.Schedule
             .find(req.query)
             .sort({ date: -1 })
-            .sort({ })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

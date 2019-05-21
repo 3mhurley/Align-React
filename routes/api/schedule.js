@@ -3,7 +3,7 @@ const schedule = require("../../controllers/schedule");
 
 // matches with "/api/:id"
 router.route('/:id')
-    .get(calendar.findById);
+    .get(schedule.findById);
 
 // matches with "/api/"
 router.route("/")
