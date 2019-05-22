@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import "./joinmodal.scss"
 
 class JoinModal extends React.Component {
     state = {
@@ -23,9 +24,13 @@ class JoinModal extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-                    JOIN CALENDAR
-        </Button>
+                <Button 
+                    id="joinBtn"
+                    variant="outlined" 
+                    color="primary" 
+                    onClick={this.handleClickOpen}>
+                        JOIN CALENDAR
+                </Button>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}

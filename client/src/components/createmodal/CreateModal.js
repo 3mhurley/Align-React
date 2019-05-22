@@ -6,6 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import "./createmodal.scss"
 
 class CreateModal extends React.Component {
 	state = {
@@ -24,10 +25,11 @@ class CreateModal extends React.Component {
 		return (
 			<div>
 				<Button
+					id="createBtn"
 					variant='outlined'
 					color='primary'
 					onClick={this.handleClickOpen}>
-					CREATE CALENDAR
+						CREATE CALENDAR
 				</Button>
 				<Dialog
 					open={this.state.open}

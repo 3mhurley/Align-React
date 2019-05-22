@@ -42,7 +42,7 @@ class ContactButton extends Component {
     return (
       <div>
           {this.renderRedirect()}
-          <Button id="contactBtn" className={classes.button} onClick={this.setRedirect}>Contact</Button>
+        <Button id="contactBtn" className={classes.button} onClick={this.setRedirect}>Contact</Button>
     </div>
     );
   }
