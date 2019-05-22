@@ -2,20 +2,16 @@ import React, {Component} from 'react';
 import Callback from './Callback';
 // import logo from './logo.svg';
 import './App.css';
-// import CalApp from './components/calendar/Calendar';
+import CalApp from './components/Calendar/Calendar';
 // import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 // import Calendar from "./pages/livecalpage";
 // import Home from "";
 // import from "../src/components/main/Main";
-import Calendar from "./pages/LiveCalendar";
-<<<<<<< HEAD
-import FrontMain from "../src/components/main/Main";
+import Calendar from './pages/LiveCalendar';
+// import FrontMain from "../src/components/main/Main";
 import auth0Client from './Auth';
-=======
-import FrontMain from "./components/Main/Main";
 import Main from "./components/Main/Main";
->>>>>>> aaa9d35a0bac2b6c748785c63486c77924560fec
 // import Home from "";
 
 class App extends Component {

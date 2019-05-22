@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import CalApp from "../components/calendar/Calendar";
-=======
+
 
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -43,7 +41,6 @@ const styles = theme => ({
 		align: "center"
 	}
 });
->>>>>>> aaa9d35a0bac2b6c748785c63486c77924560fec
 
 class Calendar extends Component {
 	render() {
