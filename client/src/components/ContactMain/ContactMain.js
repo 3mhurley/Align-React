@@ -1,168 +1,101 @@
-import React, { Component } from "react";
-import Input from "./Input";
-import TextArea from "./TextArea";
-import Button from "./Button";
-
-class FormContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      newUser: {
-        name: "",
-        email: "",
-        message: ""
-      },
-
-    };
-    this.handleTextArea = this.handleTextArea.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handleFullName = this.handleFullName.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-  }
-
-  /* This lifecycle hook gets executed when the component mounts */
-
-  handleFullName(e) {
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          name: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-  handleEmail(e) {
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          email: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-  handleInput(e) {
-    let value = e.target.value;
-    let name = e.target.name;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          [name]: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-  handleTextArea(e) {
-    console.log("Inside handleTextArea");
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          message: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
+import React, { Component} from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import "./contact.scss";
 
 
-  handleFormSubmit(e) {
-    e.preventDefault();
-    let userData = this.state.newUser;
 
-    fetch("http://example.com", {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    }).then(response => {
-      response.json().then(data => {
-        console.log("Successful" + data);
-      });
-    });
-  }
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+  },
+  dense: {
+    marginTop: 16,
+  },
+  menu: {
+    width: 200,
+  },
+});
 
-  handleClearForm(e) {
-    e.preventDefault();
+
+class FilledTextFields extends Component {
+  state = {
+    name: '',
+    multiline: 'Controlled',
+  };
+
+  handleChange = name => event => {
     this.setState({
-      newUser: {
-        name: "",
-        email: "",
-        message: ""
-      }
+      [name]: event.target.value,
     });
-  }
+  };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <form className="container-fluid" onSubmit={this.handleFormSubmit}>
-        <Input
-          inputType={"text"}
-          title={"Full Name"}
-          name={"name"}
-          value={this.state.newUser.name}
-          placeholder={"Enter your name"}
-          handleChange={this.handleInput}
-        />{" "}
-        {/* Name of the user */}
-        <Input
-          inputType={"text"}
-          name={"email"}
-          title={"Email"}
-          value={this.state.newUser.email}
-          placeholder={"Enter your email"}
-          handleChange={this.handleEmail}
-        />{" "}
-        {/* Age */}
-        
-       
-        {/* Skill */}
-        <TextArea
-          title={"Message:"}
-          rows={10}
-          value={this.state.newUser.message}
-          name={"currentPetInfo"}
-          handleChange={this.handleTextArea}
-          placeholder={"Write us a message.."}
+      <Grid container spacing={24}>
+      <Grid item xs={12}>
+      <form className={classes.container} noValidate autoComplete="off" id="nameField" >
+        <TextField
+          id="name"
+          label="Name"
+          className={classes.textField}
+          value={this.state.name}
+          onChange={this.handleChange('name')}
+          margin="normal"
+          // variant="outlined"
         />
-        {/* About you */}
-        <Button
-          action={this.handleFormSubmit}
-          type={"primary"}
-          title={"Submit"}
-          style={buttonStyle}
-        />{" "}
-        {/*Submit */}
-        <Button
-          action={this.handleClearForm}
-          type={"secondary"}
-          title={"Clear"}
-          style={buttonStyle}
-        />{" "}
-        {/* Clear the form */}
+        </form>
+       </Grid>
+
+       <Grid item xs={12}>
+       <form className={classes.container} noValidate autoComplete="off" id="emailField">
+
+        <TextField
+          required
+          id="email"
+          label="Email"
+          defaultValue="Email"
+          className={classes.textField}
+          margin="normal"
+          // variant="outlined"
+        />
+        </form>
+        </Grid>
+
+        <Grid item xs={12}>
+       <form className={classes.container} noValidate autoComplete="off" id="messageField">
+
+        <TextField
+          id="message"
+          // label="Multiline"
+          multiline
+          rows="10"
+          defaultValue="Please write message here"
+          className={classes.textField}
+          margin="normal"
+          // variant="outlined"
+        />
+
       </form>
+      </Grid>
+      </Grid>
     );
   }
 }
 
-const buttonStyle = {
-  margin: "10px 10px 10px 10px"
+FilledTextFields.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default FormContainer;
+export default withStyles(styles)(FilledTextFields);

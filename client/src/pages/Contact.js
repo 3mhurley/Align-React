@@ -3,7 +3,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 // import DemoCal from "../components/DemoCalendar";
 import Navbar from "../components/Navbar/Navbar";
-import FormControl from "../components/ContactMain/ContactMain";
+import OutlinedTextFields from "../components/ContactMain/ContactMain";
 
 class Contact extends Component {
 
@@ -13,7 +13,7 @@ class Contact extends Component {
                 <Navbar />
                 <br />
                 <div>
-               <FormControl />
+                <OutlinedTextFields />
                 </div>
             </div>
 
