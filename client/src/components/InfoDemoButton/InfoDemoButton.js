@@ -14,8 +14,7 @@ const styles = theme => ({
   },
 });
 
-
-class ContactButton extends Component {
+class InfoDemoButton extends Component {
   state = {
     redirect: false
   }
@@ -26,29 +25,28 @@ class ContactButton extends Component {
     })
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) {			
-			this.setState({
-				redirect: false
-			})
-      return <Redirect to  = '/contact' />
-
+  rednerRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to = '/info/demo'>
+      </Redirect>
     }
   }
 
   render() {
   const { classes } = this.props;
-    return (
-      <div>
-          {this.renderRedirect()}
-          <Button className={classes.button} onClick={this.setRedirect}>Contact</Button>
+  return (
+    <div>
+      {this.rednerRedirect()}
+      <Button variant="contained" color="primary" className={classes.button} onClick={this.setRedirect}>
+        DEMO
+      </Button>
     </div>
     );
   }
 }
 
-ContactButton.propTypes = {
+InfoDemoButton.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContactButton);
+export default withStyles(styles)(InfoDemoButton);

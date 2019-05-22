@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import Callback from './Callback';
-// import logo from './logo.svg';
-import './App.css';
 import CalApp from './components/Calendar/Calendar';
-// import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
-// import Calendar from "./pages/livecalpage";
-// import Home from "";
-// import from "../src/components/main/Main";
 import Calendar from './pages/LiveCalendar';
-// import FrontMain from "../src/components/main/Main";
 import auth0Client from './Auth';
-import Main from "./components/Main/Main";
-// import Home from "";
+// import Main from "./components/Main/Main";
+import Home from './pages/Home';
+import Info from './pages/Info';
+import Demo from './pages/Demo';
+// import Contact from "./pages/Contact"
+
 
 class App extends Component {
   constructor(props) {
@@ -41,9 +38,11 @@ class App extends Component {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Main} />
-          {/* <Route exact path="/info" component={Info} /> */}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/info" component={Info} />
           <Route exact path='/calendar' component={Calendar} />
+          <Route exact path='/info/demo' component={Demo} />
+          {/* <Route exact path='/contact' component={Contact} /> */}
           {/* <Route exact path="/calendar/:id" component={CalApp} /> */}
           <Route exact path='/callback' component={Callback}/>
         </Switch>

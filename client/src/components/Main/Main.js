@@ -7,14 +7,18 @@ import JoinModal from '../JoinModal/JoinModal';
 import Navbar from '../Navbar/Navbar';
 
 const styles = theme => ({
+ 
   root: {
     flexGrow: 1,
     background: '#4794B3',
     textAlign: 'center',
-    paddingTop: 250,
-    paddingBottom: 500,
+    paddingTop: 207,
+    paddingBottom: 327,
     marginTop: 3,
     color: 'white',
+    overflow: 'hidden',
+    fontSize: 40
+    
   }
 });
 
@@ -23,28 +27,23 @@ class FrontMain extends Component {
   render() {
   const { classes } = this.props;
     return (
-      <div>
-      <div>
-        <Navbar />
-      </div>
+      <body>
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <h1>Align</h1>
           </Grid>
           <Grid item xs={6} className="createModal">
-            {/* <CreateModal /> */}
               <CreateModal />
 
           </Grid>
           <Grid item xs={6} className="joinModal">
-            {/* <JoinModal /> */}
               <JoinModal />
 
           </Grid>
       </Grid>
     </div>
-    </div>
+    </body>
 
     );
 
