@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 // import DemoCal from "../components/DemoCalendar";
-import Navbar from "../components/Navbar/Navbar"
+import Navbar from "../components/Navbar/Navbar";
+import FormControl from "../components/ContactMain/ContactMain";
 
-class DemoCalendar extends Component {
+class Contact extends Component {
 
     render() {
         return (
             <div>
                 <Navbar />
-                <h1>Demo the Align Calendar</h1>
                 <br />
                 <div>
-                {/* Demo Calendar Here */}
+               <FormControl />
                 </div>
             </div>
 
@@ -21,4 +21,4 @@ class DemoCalendar extends Component {
     }
 }
 
-export default DemoCalendar;
+export default Contact;

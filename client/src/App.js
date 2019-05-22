@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Calendar from "./pages/LiveCalendar";
-import FrontMain from "./components/Main/Main";
-import Main from "./components/Main/Main";
+import Home from "./pages/Home";
+import Info from "./pages/Info";
+import Demo from "./pages/Demo";
+// import Contact from "./pages/Contact"
+
 // import Home from "";
 
 function App() {
@@ -12,9 +15,11 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={Main} />
-          {/* <Route exact path="/info" component={Info} /> */}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/info" component={Info} />
           <Route exact path='/calendar' component={Calendar} />
+          <Route exact path='/info/demo' component={Demo} />
+          {/* <Route exact path='/contact' component={Contact} /> */}
           {/* <Route exact path="/calendar/:id" component={CalApp} /> */}
         </Switch>
       </div>
