@@ -1,4 +1,4 @@
-import React from "./node_modules/react";
+import React from "react";
 
 // @fullcalendar/react @fullcalendar/interaction @fullcalendar/daygrid @fullcalendar/moment @fullcalendar/timegrid
 import FullCalendar from "@fullcalendar/react";
@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import momentPlugin from "@fullcalendar/moment";
-import moment from "./node_modules/moment";
+import moment from "moment";
 
 import "./cal.scss";
 
