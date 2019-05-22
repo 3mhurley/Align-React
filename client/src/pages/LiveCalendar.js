@@ -12,8 +12,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import CalApp from "../components/Calendar/Calendar";
+import CalApp from "../components/calendar/Calendar";
 import Navbar from "../components/Navbar/Navbar";
+import WidgetThingy from "../components"
 
 const flex = {
 	display: "flex",
@@ -51,13 +52,18 @@ class Calendar extends Component {
 				</div>
 				<br />
 				<div className={classes.root}>
-					<Grid container spacing={0}>
-						<Grid item xs={12}>
+					<Grid container spacing={16}>
+						<Grid item xs={9}>
 							<Paper className={classes.paper}>
 								<div>
 									<CalApp />
 								</div>
 							</Paper>
+						</Grid>
+						<Grid item xs={3}>
+							<div>
+								<WidgetThingy />
+							</div>
 						</Grid>
 					</Grid>
 				</div>
