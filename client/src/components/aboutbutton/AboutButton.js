@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 const styles = theme => ({
 	button: {
@@ -25,11 +25,15 @@ class AboutButton extends Component {
 	}
 
 	renderRedirect = () => {
-		if (this.state.redirect) {
+		if (this.state.redirect) {			
+			this.setState({
+				redirect: false
+			})
 			return <Redirect to = '/info' />
 		}
 	}
-	
+
+
 	render() {
 		const { classes } = this.props;
 		return (

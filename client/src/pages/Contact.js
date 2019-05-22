@@ -11,7 +11,6 @@ class Contact extends Component {
         return (
             <div>
                 <Navbar />
-               
                 <br />
                 <div>
                <FormControl />
