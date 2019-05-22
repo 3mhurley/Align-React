@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 
 import CalApp from "../components/Calendar/Calendar";
 import Navbar from "../components/Navbar/Navbar";
+import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
 
 const flex = {
 	display: "flex",
@@ -28,16 +29,16 @@ const styles = theme => ({
 	},
 	paper: {
 		...flex,
-		width: "90%",
+		// width: "90%",
 		padding: theme.spacing.unit * 2,
-		margin: theme.spacing.unit,
+		// margin: theme.spacing.unit,
 		textAlign: "center"
 	},
 	card: {
 		...flex,
-		width: "90%",
+		// width: "90%",
 		padding: theme.spacing.unit * 2,
-		align: "center"
+		// margin: theme.spacing.unit
 	}
 });
 
@@ -51,13 +52,18 @@ class Calendar extends Component {
 				</div>
 				<br />
 				<div className={classes.root}>
-					<Grid container spacing={0}>
-						<Grid item xs={12}>
+					<Grid container spacing={16}>
+						<Grid item xs={9}>
 							<Paper className={classes.paper}>
 								<div>
 									<CalApp />
 								</div>
 							</Paper>
+						</Grid>
+						<Grid item xs={3}>
+							<div>
+								<WidgetThingy />
+							</div>
 						</Grid>
 					</Grid>
 				</div>

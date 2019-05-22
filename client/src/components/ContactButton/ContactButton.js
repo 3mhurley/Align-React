@@ -28,7 +28,7 @@ class ContactButton extends Component {
   }
 
   renderRedirect = () => {
-    if (this.state.redirect) {			
+    if (this.state.redirect) {
 			this.setState({
 				redirect: false
 			})
