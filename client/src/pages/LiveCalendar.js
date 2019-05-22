@@ -12,9 +12,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import CalApp from "../components/calendar/Calendar";
+import CalApp from "../components/Calendar/Calendar";
 import Navbar from "../components/Navbar/Navbar";
-import WidgetThingy from "../components"
+import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
 
 const flex = {
 	display: "flex",
@@ -29,16 +29,16 @@ const styles = theme => ({
 	},
 	paper: {
 		...flex,
-		width: "90%",
+		// width: "90%",
 		padding: theme.spacing.unit * 2,
-		margin: theme.spacing.unit,
+		// margin: theme.spacing.unit,
 		textAlign: "center"
 	},
 	card: {
 		...flex,
-		width: "90%",
+		// width: "90%",
 		padding: theme.spacing.unit * 2,
-		align: "center"
+		// margin: theme.spacing.unit
 	}
 });
 
