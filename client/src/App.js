@@ -9,8 +9,13 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router
 // import Home from "";
 // import from "../src/components/main/Main";
 import Calendar from "./pages/LiveCalendar";
+<<<<<<< HEAD
 import FrontMain from "../src/components/main/Main";
 import auth0Client from './Auth';
+=======
+import FrontMain from "./components/Main/Main";
+import Main from "./components/Main/Main";
+>>>>>>> aaa9d35a0bac2b6c748785c63486c77924560fec
 // import Home from "";
 
 class App extends Component {
@@ -40,7 +45,7 @@ class App extends Component {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={FrontMain} />
+          <Route exact path="/" component={Main} />
           {/* <Route exact path="/info" component={Info} /> */}
           <Route exact path='/calendar' component={Calendar} />
           {/* <Route exact path="/calendar/:id" component={CalApp} /> */}

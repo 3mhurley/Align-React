@@ -34,28 +34,60 @@ class CreateModal extends React.Component {
 					open={this.state.open}
 					onClose={this.handleClose}
 					aria-labelledby='form-dialog-title'>
-					<DialogTitle id='form-dialog-title'>Subscribe</DialogTitle>
+					<DialogTitle id='form-dialog-title'>Create Your Calendar</DialogTitle>
 					<DialogContent>
 						<DialogContentText>
-							To subscribe to this website, please enter your email address
-							here. We will send updates occasionally.
+							Fill out the information below to start.
 						</DialogContentText>
 						<TextField
-							autoFocus
 							margin='dense'
-							id='name'
+							id='first-name'
+							label='First Name'
+							type='string'
+							fullWidth
+						/>
+						<TextField
+							margin='dense'
+							id='last-name'
+							label='Last Name'
+							type='string'
+							fullWidth
+						/>
+						<TextField
+							margin='dense'
+							id='email'
 							label='Email Address'
 							type='email'
 							fullWidth
 						/>
+						<TextField
+						margin="dense"
+							id="date"
+							label="Start Date"
+							type="date"
+							defaultValue="Calendar Start Date"
+							InputLabelProps={{
+								shrink: true,
+							}}
+							fullWidth
+						/>
 					</DialogContent>
 					<DialogActions>
+<<<<<<< HEAD
 						<Button onClick={this.handleClose} color='primary'>Cancel</Button>
 						{
 							!auth0Client.isAuthenticated() &&
 							<Button onClick={this.handleClose} color='primary' 	onClick={auth0Client.signIn}>Subscribe
 							</Button>
 						}
+=======
+						<Button onClick={this.handleClose} color='secondary'>
+							Cancel
+						</Button>
+						<Button onClick={this.handleClose} color='primary'>
+							Submit
+						</Button>
+>>>>>>> aaa9d35a0bac2b6c748785c63486c77924560fec
 					</DialogActions>
 				</Dialog>
 			</div>
@@ -63,4 +95,4 @@ class CreateModal extends React.Component {
 	}
 }
 
-export default CreateModal;
+export default (CreateModal);
