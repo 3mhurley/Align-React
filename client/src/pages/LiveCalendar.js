@@ -1,20 +1,80 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
 import CalApp from "../components/Calendar/Calendar";
+import Navbar from "../components/Navbar/Navbar";
+
+const flex = {
+	display: "flex",
+	alignItems: "baseline",
+	justifyContent: "space-evenly"
+};
+
+const styles = theme => ({
+	root: {
+		flexGrow: 1,
+		maxWidth: 1000
+	},
+	paper: {
+		...flex,
+		width: "90%",
+		padding: theme.spacing.unit * 2,
+		margin: theme.spacing.unit,
+		textAlign: "center"
+	},
+	card: {
+		...flex,
+		width: "90%",
+		padding: theme.spacing.unit * 2,
+		align: "center"
+	}
+});
 
 class Calendar extends Component {
 	render() {
+		const { classes } = this.props;
 		return (
 			<div>
-				<h1>Align Your Calendar</h1>
-				<br />
 				<div>
-					<CalApp />
+					<Navbar />
 				</div>
+				<br />
+				<div className={classes.root}>
+					<Grid container spacing={0}>
+						<Grid item xs={12}>
+							<Paper className={classes.paper}>
+								<div>
+									<CalApp />
+								</div>
+							</Paper>
+						</Grid>
+					</Grid>
+				</div>
+				{/* <Card className={classes.root}>
+					<CardContent className={classes.card}>
+						<div>
+							<CalApp />
+						</div>
+					</CardContent>
+				</Card> */}
 			</div>
 		);
 	}
 }
 
-export default Calendar;
+Calendar.propTypes = {
+	classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Calendar);

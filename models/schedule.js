@@ -4,20 +4,26 @@ var Schema = mongoose.Schema;
 //schema constructor
 var ScheduleSchema = new Schema({
 
-    guestname: {
+    title: {
         type: String,
-        trim: true,
-    },
-
-    email: {
-        type: String,
-        unique: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+        trim: true
     },
 
     calendarID: {
+        type: String
+    },
+
+    userId: {
         type: String,
-        trim: true,
+        unique: true,
+    },
+
+    start: {
+        type: String,
+    },
+
+    end: {
+        type: String,
     }
 
 });
