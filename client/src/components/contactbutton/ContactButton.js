@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Redirect } from "react-router-dom";
+import "./contactBtn.scss"
 
 
 const styles = theme => ({
@@ -41,7 +42,7 @@ class ContactButton extends Component {
     return (
       <div>
           {this.renderRedirect()}
-          <Button className={classes.button} onClick={this.setRedirect}>Contact</Button>
+          <Button id="contactBtn" className={classes.button} onClick={this.setRedirect}>Contact</Button>
     </div>
     );
   }
