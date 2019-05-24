@@ -1,34 +1,20 @@
-#nameField {
-    margin: auto;
-    margin-left: 300px;
-    margin-top: 100px;
 
-}
-
-#name {
+#name{
     background-color: white;
-    color: black;
-}
-
-#emailField {
-    margin: auto;
-    margin-left: 300px;
 }
 
 #email {
+    // margin-top: 10px;
     background-color: white;
-}
-
-
-#messageField {
-    margin: auto;
-    margin-left: 300px;
-
-
 }
 
 #message {
+    margin-top: -10px;
+    width: 600px;
+    // height: 200px;
+    // color: white;
     background-color: white;
-    width: 900px;
-
 }
+
+
+
