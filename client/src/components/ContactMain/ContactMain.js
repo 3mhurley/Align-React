@@ -1,168 +1,137 @@
-import React, { Component } from "react";
-import Input from "./Input";
-import TextArea from "./TextArea";
-import Button from "./Button";
+import React, {Component} from 'react';
+import axios from 'axios'
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import "./contact.scss";
 
-class FormContainer extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      newUser: {
-        name: "",
-        email: "",
-        message: ""
-      },
-
-    };
-    this.handleTextArea = this.handleTextArea.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handleFullName = this.handleFullName.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleInput = this.handleInput.bind(this);
+const styles = theme => ({
+ 
+  root: {
+    flexGrow: 1,
+    background: '#4794B3',
+    textAlign: 'center',
+    // paddingTop: 207,
+    // paddingBottom: 327,
+    marginTop: 100,
+    color: 'white',
+    overflow: 'hidden',
+    fontSize: 18
+    
   }
+});
+class ContactForm extends Component {
 
-  /* This lifecycle hook gets executed when the component mounts */
+  state = {
+    name: '',
+    email: '',
+    message: '',
+  };
 
-  handleFullName(e) {
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          name: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
+  };
 
-  handleEmail(e) {
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          email: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-  handleInput(e) {
-    let value = e.target.value;
-    let name = e.target.name;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          [name]: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-  handleTextArea(e) {
-    console.log("Inside handleTextArea");
-    let value = e.target.value;
-    this.setState(
-      prevState => ({
-        newUser: {
-          ...prevState.newUser,
-          message: value
-        }
-      }),
-      () => console.log(this.state.newUser)
-    );
-  }
-
-
-  handleFormSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-    let userData = this.state.newUser;
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    const email = document.getElementById('email').value;
 
-    fetch("http://example.com", {
+    const validateEmail = () => {
+        const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (!email.match(filter)) {
+        alert("Please enter a valid email.");
+        } else {
+     
+    axios({
       method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
+      url:"http://localhost:3000/send",
+      data: {
+        name: name,
+        email: email,
+        message: message
       }
-    }).then(response => {
-      response.json().then(data => {
-        console.log("Successful" + data);
-      });
-    });
-  }
+    }).then((response) => {
+      if (response.data.msg === 'success') {
+        alert("Message has been sent.");
+        this.resetForm()
 
-  handleClearForm(e) {
-    e.preventDefault();
-    this.setState({
-      newUser: {
-        name: "",
-        email: "",
-        message: ""
+      }else if (response.data.msg === 'fail') {
+        alert("Message failed to send.")
       }
-    });
+
+    })
+
+   
+  }
+}
+validateEmail();
+
+  }
+  resetForm = () => {
+    document.getElementById('contact-form').reset();
+
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <form className="container-fluid" onSubmit={this.handleFormSubmit}>
-        <Input
-          inputType={"text"}
-          title={"Full Name"}
-          name={"name"}
-          value={this.state.newUser.name}
-          placeholder={"Enter your name"}
-          handleChange={this.handleInput}
-        />{" "}
-        {/* Name of the user */}
-        <Input
-          inputType={"text"}
-          name={"email"}
-          title={"Email"}
-          value={this.state.newUser.email}
-          placeholder={"Enter your email"}
-          handleChange={this.handleEmail}
-        />{" "}
-        {/* Age */}
-        
-       
-        {/* Skill */}
-        <TextArea
-          title={"Message:"}
-          rows={10}
-          value={this.state.newUser.message}
-          name={"currentPetInfo"}
-          handleChange={this.handleTextArea}
-          placeholder={"Write us a message.."}
-        />
-        {/* About you */}
-        <Button
-          action={this.handleFormSubmit}
-          type={"primary"}
-          title={"Submit"}
-          style={buttonStyle}
-        />{" "}
-        {/*Submit */}
-        <Button
-          action={this.handleClearForm}
-          type={"secondary"}
-          title={"Clear"}
-          style={buttonStyle}
-        />{" "}
-        {/* Clear the form */}
-      </form>
-    );
-  }
-}
+    <div className ={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item xs={12}>
+          <form className={classes.container} noValidate autoComplete="off" id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+            <TextField
+              id="name"
+              label="Name"
+              className={classes.textField}
+              value={this.state.name}
+              onChange={this.handleChange('name')}
+              margin="normal"
+              variant="filled"
+            />
+            <br></br>
 
-const buttonStyle = {
-  margin: "10px 10px 10px 10px"
+            <TextField
+              required
+              id="email"
+              label="Email"
+              className={classes.textField}
+              type="email"
+              autoComplete="email"
+              margin="normal"
+              variant="filled"
+              />
+            <br></br>
+
+
+            <TextField
+              id="message"
+              label="Write message here"
+              multiline
+              rows="8"
+              className={classes.textField}
+              margin="normal"
+              variant="filled"
+            />
+          <br></br>
+
+            <Button type="submit" color="primary">Submit</Button>
+
+          </form>
+       </Grid>
+    </Grid>
+    </div>
+  );
+}
+}
+    
+ContactForm.propTypes = {
+  classes: PropTypes.object.isRequired,
 };
 
-export default FormContainer;
+export default withStyles(styles)(ContactForm);
+
