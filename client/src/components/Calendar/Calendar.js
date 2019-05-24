@@ -37,8 +37,8 @@ export default class CalApp extends React.Component {
 	};
 
 	handleSelect = arg => {
-		let mStart;
-		let mEnd;
+		// let mStart;
+		// let mEnd;
 
 		let newEvent = {
 			calendarId: "12XHW2H39VEH21",
@@ -62,7 +62,7 @@ export default class CalApp extends React.Component {
 		// console.log(this.state.calendarEvents);
 	};
 
-	handleResize 
+	handleResize
 
 	render() {
 		return (

@@ -19,7 +19,7 @@ const styles = theme => ({
     color: 'white',
     overflow: 'hidden',
     fontSize: 40
-    
+
   }
 });
 
