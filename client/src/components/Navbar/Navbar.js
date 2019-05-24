@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import TitleButton from '../TitleButton/TitleButton';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
 import auth0Client from '../../Auth';
 import UserAuth from '../UserAuth/UserAuth';
+import './navbar.scss';
 
 
 //styles
@@ -33,12 +34,7 @@ class Navbar extends Component {
       <div className={classes.root}>
           <AppBar position="static" className={classes.root} >
              <Toolbar>
-              <Typography variant="h6" className={classes.grow}>
-                Simple Calendar
-                Sharing...
-
-                Period.
-              </Typography>
+              <TitleButton />
               <AboutButton />
               <ContactButton />
               <DemoButton />

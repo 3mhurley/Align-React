@@ -26,7 +26,7 @@ class AboutButton extends Component {
 	}
 
 	renderRedirect = () => {
-		if (this.state.redirect) {			
+		if (this.state.redirect) {
 			this.setState({
 				redirect: false
 			})
