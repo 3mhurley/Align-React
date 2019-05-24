@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import Callback from './Callback';
 import CalApp from './components/Calendar/Calendar';
@@ -9,6 +10,17 @@ import Home from './pages/Home';
 import Info from './pages/Info';
 import Demo from './pages/Demo';
 // import Contact from "./pages/Contact"
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+
+import Calendar from "./pages/LiveCalendar";
+import Home from "./pages/Home";
+import Info from "./pages/Info";
+import Demo from "./pages/Demo";
+import Contact from "./pages/Contact"
+>>>>>>> 75749e85edb6eb84815d6d9c18aaed56455e41f3
 
 
 class App extends Component {
@@ -42,7 +54,7 @@ class App extends Component {
           <Route exact path="/info" component={Info} />
           <Route exact path='/calendar' component={Calendar} />
           <Route exact path='/info/demo' component={Demo} />
-          {/* <Route exact path='/contact' component={Contact} /> */}
+          <Route exact path='/contact' component={Contact} />
           {/* <Route exact path="/calendar/:id" component={CalApp} /> */}
           <Route exact path='/callback' component={Callback}/>
         </Switch>

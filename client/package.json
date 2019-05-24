@@ -17,7 +17,11 @@
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+<<<<<<< HEAD
     "react-router": "^5.0.0",
+=======
+    "react-material-ui-form-validator": "^2.0.8",
+>>>>>>> 75749e85edb6eb84815d6d9c18aaed56455e41f3
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0"
   },

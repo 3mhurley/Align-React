@@ -15,11 +15,8 @@ import Typography from "@material-ui/core/Typography";
 
 import CalApp from "../components/Calendar/Calendar";
 import Navbar from "../components/Navbar/Navbar";
-<<<<<<< HEAD
 import auth0Client from '.././Auth';
-=======
 import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
->>>>>>> bef334dea1e364d0d6096f385bac104e4c00cb28
 
 const flex = {
 	display: "flex",
