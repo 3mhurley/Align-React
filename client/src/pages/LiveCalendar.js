@@ -15,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 
 import CalApp from "../components/Calendar/Calendar";
 import Navbar from "../components/Navbar/Navbar";
+import auth0Client from '.././Auth';
 
 const flex = {
 	display: "flex",
@@ -49,6 +50,7 @@ class Calendar extends Component {
 			<div>
 				<div>
 					<Navbar />
+					{/* <label className="mr-2 text-black">{auth0Client.getProfile().name}</label> */}
 				</div>
 				<br />
 				<div className={classes.root}>

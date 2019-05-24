@@ -1,18 +1,27 @@
+import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from '../../Auth';
-import React, {Component} from 'react';
+import { withStyles } from "@material-ui/core/styles";
+import './userA.scss';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit
+    },
+    input: {
+        display: "none"
+    }
+});
+
 
 function UserAuth(props) {
     const signOut = () => {
       auth0Client.signOut();
-      props.history.replace('/');
+      props.history.replace('/info');
     };
   
     return (
-      <nav className="navbar navbar-dark bg-primary fixed-top">
-        <Link className="navbar-brand" to="/">
-          Align
-        </Link>
+      <div>
         {
           !auth0Client.isAuthenticated() &&
           <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
@@ -21,10 +30,10 @@ function UserAuth(props) {
           auth0Client.isAuthenticated() &&
           <div>
             <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-            <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
+            <button className="userA" onClick={() => {signOut()}}>Sign Out</button>
           </div>
         }
-      </nav>
+      </div>
     );
   }
   

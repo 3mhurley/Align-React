@@ -8,6 +8,7 @@ import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
 import auth0Client from '../../Auth';
+import UserAuth from '../UserAuth/UserAuth';
 
 
 //styles
@@ -41,6 +42,7 @@ class Navbar extends Component {
               <AboutButton />
               <ContactButton />
               <DemoButton />
+              <UserAuth />
             </Toolbar>
            </AppBar>
       </div>
