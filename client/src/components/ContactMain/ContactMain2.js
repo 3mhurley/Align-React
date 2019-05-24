@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-// import TextField from '@material-ui/core/TextField';
 import "./contact.scss";
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
@@ -34,18 +33,20 @@ class MyForm extends Component {
     }
  
     handleNameChange = (event) => {
-        const name = event.target.value;
-        this.setState({name})
+        const name  = event.target.value;
+        this.setState({ name })
     }
 
     handleEmailChange = (event) => {
         const email = event.target.value;
-        this.setState({email})
+        this.setState({ email })
+
     }
 
     handleMessageChange = (event) => {
         const message = event.target.value;
-        this.setState({message})
+        this.setState({ message })
+
     }
 
    
@@ -56,31 +57,33 @@ class MyForm extends Component {
         const message = document.getElementById('message').value;
         const email = document.getElementById('email').value;
 
-        axios({
-            method: "POST",
-            url:"http://localhost:3000/send",
-            data: {
-              name: name,
-              email: email,
-              message: message
-            }
-          }).then((response) => {
-            if (response.data.msg === 'success') {
-              alert("Message has been sent.");
-              this.resetForm()
+        console.log(name);
+        console.log(email);
+        console.log(message);
+
+        // axios({
+        //     method: "POST",
+        //     url:"http://localhost:3000/send",
+        //     data: {
+        //       name: name,
+        //       email: email,
+        //       message: message
+        //     }
+        //   }).then((response) => {
+        //     if (response.data.msg === 'success') {
+        //       alert("Message has been sent.");
+        //       this.resetForm()
       
-            }else if (response.data.msg === 'fail') {
-              alert("Message failed to send.")
-            }
+        //     }else if (response.data.msg === 'fail') {
+        //       alert("Message failed to send.")
+        //     }
       
-          })
+        //   })
     }
  
     render() {
-        const { name, email, message } = this.state
-        // const { email } = this.state;
-        // const { message } = this.state;
-        const { classes } = this.props
+        const { name, email, message } = this.state;
+        const { classes } = this.props;
         return (
             <div className = {classes.root}>
             <Grid container spacing={24}>
@@ -98,8 +101,8 @@ class MyForm extends Component {
                     onChange={this.handleNameChange}
                     name="name"
                     value={name}
-                    validators={['required', 'isName']}
-                    errorMessages={['this field is required', 'name is not valid']}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     id="name"
                     margin="normal"
                     variant="filled"
@@ -124,8 +127,8 @@ class MyForm extends Component {
                     onChange={this.handleMessageChange}
                     name="message"
                     value={message}
-                    validators={['required', 'isMessage']}
-                    errorMessages={['this field is required', 'message is not valid']}
+                    validators={['required']}
+                    errorMessages={['this field is required']}
                     id="message"
                     margin="normal"
                     variant="filled"
@@ -136,6 +139,7 @@ class MyForm extends Component {
                 <br></br>
 
                 <Button type="submit">Submit</Button>
+
             </ValidatorForm>
             </Grid>
             </Grid>
