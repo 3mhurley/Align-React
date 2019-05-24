@@ -7,7 +7,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import momentPlugin from "@fullcalendar/moment";
 import moment from "moment";
-
+import API from "axios";
 import "./cal.scss";
 
 export default class CalApp extends React.Component {
@@ -40,24 +40,54 @@ export default class CalApp extends React.Component {
 		// let mStart;
 		// let mEnd;
 
+		
 		let newEvent = {
-			calendarId: "12XHW2H39VEH21",
-			userId: "bob@gmail.com",
+			calendarId: "",
+			userId: "",
 			start: arg.start,
 			end: arg.end
 		};
 
-		this.setState({
-			// add new event data
-			calendarEvents: this.state.calendarEvents.concat({
-				// creates a new array
-				title: newEvent.userId,
-				start: newEvent.start,
-				end: newEvent.end,
-				editable: true,
-				eventResizableFromStart: true
-			})
-		});
+		// componentDidMount() {
+		// 	this.loadCalendar();
+		// }
+
+		// Push it to the DB
+		
+		//load calendar by id from DB
+		loadCalendar = (id) => {
+			API.getCalendar(id)
+				.then(res => 
+					this.setState({
+						title: res.data,
+						start: res.data,
+						end: res.data,
+						editable: true,
+						eventResizableFromStart: true
+						})
+				)
+				.catch(err => console.log(err));
+		};
+
+		//save new user events to DB
+		saveEvent = id => {
+			API.saveSchedule()
+				.then(res =>
+					this.setState({
+						// add new event data
+						calendarEvents: this.state.calendarEvents.concat({
+							// creates a new array
+							title: newEvent.userId,
+							start: newEvent.start,
+							end: newEvent.end,
+							editable: true,
+							eventResizableFromStart: true
+						})
+					})
+				).catch(err => console.log(err));
+		};
+
+		
 		// console.log(arg);
 		// console.log(this.state.calendarEvents);
 	};
