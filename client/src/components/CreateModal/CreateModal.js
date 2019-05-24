@@ -6,11 +6,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-<<<<<<< HEAD:client/src/components/createmodal/CreateModal.js
 import auth0Client from "../../Auth";
-=======
 import "./createmodal.scss"
->>>>>>> bef334dea1e364d0d6096f385bac104e4c00cb28:client/src/components/CreateModal/CreateModal.js
 
 class CreateModal extends React.Component {
 	state = {
