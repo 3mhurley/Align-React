@@ -56,6 +56,19 @@ class Auth {
     this.idToken = null;
     this.profile = null;
     this.expiresAt = null;
+
+    localStorage.removeItem('isLoggedIn');
+
+    this.auth0.logout({
+      returnTo: window.location.origin
+    });
+
+  }
+  isAuthenticated() {
+    // Check whether the current time is past the
+    // access token's expiry time
+    let expiresAt = this.expiresAt;
+    return new Date().getTime() < expiresAt;
   }
 }
 
