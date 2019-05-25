@@ -36,10 +36,38 @@ export default class CalApp extends React.Component {
 		]
 	};
 
+	componentDidMount() {
+		this.loadCalendar();
+	}
+
+	//load calendar by id from DB
+	loadCalendar = (id) => {
+		API.getCalendar(id)
+			.then(res => 
+				this.setState({
+					title: res.data,
+					start: res.data,
+					end: res.data,
+					editable: true,
+					eventResizableFromStart: true
+					})
+			)
+			.catch(err => console.log(err));
+	};
+
+
 	handleSelect = arg => {
 		// let mStart;
 		// let mEnd;
 
+		saveEvent = newEvent => {
+			API.saveSchedule({
+				//calendarId: calendarId,
+				userId: newEvent.userId,
+				start: newEvent.start,
+				end: newEvent.end
+			})
+		}
 		
 		let newEvent = {
 			calendarId: "",
@@ -48,51 +76,26 @@ export default class CalApp extends React.Component {
 			end: arg.end
 		};
 
-		// componentDidMount() {
-		// 	this.loadCalendar();
-		// }
-
-		// Push it to the DB
 		
-		//load calendar by id from DB
-		loadCalendar = (id) => {
-			API.getCalendar(id)
-				.then(res => 
-					this.setState({
-						title: res.data,
-						start: res.data,
-						end: res.data,
-						editable: true,
-						eventResizableFromStart: true
-						})
-				)
-				.catch(err => console.log(err));
-		};
-
-		//save new user events to DB
-		saveEvent = id => {
-			API.saveSchedule()
-				.then(res =>
-					this.setState({
-						// add new event data
-						calendarEvents: this.state.calendarEvents.concat({
-							// creates a new array
-							title: newEvent.userId,
-							start: newEvent.start,
-							end: newEvent.end,
-							editable: true,
-							eventResizableFromStart: true
-						})
-					})
-				).catch(err => console.log(err));
-		};
+		this.setState({
+			// add new event data
+			calendarEvents: this.state.calendarEvents.concat({
+				// creates a new array
+				title: newEvent.userId,
+				start: newEvent.start,
+				end: newEvent.end,
+				editable: true,
+				eventResizableFromStart: true
+			})
+		})
+	};
 
 		
 		// console.log(arg);
 		// console.log(this.state.calendarEvents);
-	};
 
-	handleResize
+
+	// handleResize
 
 	render() {
 		return (
