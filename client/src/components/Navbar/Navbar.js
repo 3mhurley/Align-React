@@ -7,7 +7,7 @@ import TitleButton from '../TitleButton/TitleButton';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton';
-import './navbar.scss';
+// import './navbar.scss';
 
 
 //styles

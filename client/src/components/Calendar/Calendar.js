@@ -7,7 +7,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import momentPlugin from "@fullcalendar/moment";
 import moment from "moment";
-
+import API from "axios";
 import "./cal.scss";
 
 export default class CalApp extends React.Component {
@@ -36,17 +36,47 @@ export default class CalApp extends React.Component {
 		]
 	};
 
+	componentDidMount() {
+		this.loadCalendar();
+	}
+
+	//load calendar by id from DB
+	loadCalendar = (id) => {
+		API.getCalendar(id)
+			.then(res => 
+				this.setState({
+					title: res.data,
+					start: res.data,
+					end: res.data,
+					editable: true,
+					eventResizableFromStart: true
+					})
+			)
+			.catch(err => console.log(err));
+	};
+
+
 	handleSelect = arg => {
 		// let mStart;
 		// let mEnd;
 
+		saveEvent = newEvent => {
+			API.saveSchedule({
+				//calendarId: calendarId,
+				userId: newEvent.userId,
+				start: newEvent.start,
+				end: newEvent.end
+			})
+		}
+		
 		let newEvent = {
-			calendarId: "12XHW2H39VEH21",
-			userId: "bob@gmail.com",
+			calendarId: "",
+			userId: "",
 			start: arg.start,
 			end: arg.end
 		};
 
+		
 		this.setState({
 			// add new event data
 			calendarEvents: this.state.calendarEvents.concat({
@@ -57,12 +87,15 @@ export default class CalApp extends React.Component {
 				editable: true,
 				eventResizableFromStart: true
 			})
-		});
-		// console.log(arg);
-		// console.log(this.state.calendarEvents);
+		})
 	};
 
-	handleResize
+		
+		// console.log(arg);
+		// console.log(this.state.calendarEvents);
+
+
+	// handleResize
 
 	render() {
 		return (
