@@ -55,7 +55,7 @@ class Auth {
     // clear id token, profile, and expiration
     this.idToken = null;
     this.profile = null;
-    this.expiresAt = 0;
+    this.expiresAt = null;
   }
 }
 

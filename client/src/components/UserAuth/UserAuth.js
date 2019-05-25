@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import auth0Client from '../../Auth';
-import { withStyles } from "@material-ui/core/styles";
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 import './userA.scss';
 
 const styles = theme => ({
@@ -17,20 +18,20 @@ const styles = theme => ({
 function UserAuth(props) {
     const signOut = () => {
       auth0Client.signOut();
-      props.history.replace('/info');
+      props.history.replace('/home');
     };
   
     return (
       <div>
         {
           !auth0Client.isAuthenticated() &&
-          <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+          <Button id="userA" onClick={auth0Client.signIn}>Sign In</Button>
         }
         {
           auth0Client.isAuthenticated() &&
           <div>
             <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-            <button className="userA" onClick={() => {signOut()}}>Sign Out</button>
+            <Button id="userA" onClick={() => {signOut()}}>Sign Out</Button>
           </div>
         }
       </div>
