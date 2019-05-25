@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -30,11 +30,11 @@ const styles = theme => ({
   },
 });
 
-function InfoMain(props) {
-  const { classes } = props;
+class InfoMain extends Component {
+  render() {
+  const { classes } = this.props;
 
   return (
-    <body>
          <div className={classes.root}>
             <Grid container spacing={24}>
                 <Grid item xs={12}>
@@ -60,8 +60,8 @@ function InfoMain(props) {
             </Grid> */}
         </Grid>
     </div>
-    </body>
   );
+          }
 }
 
 InfoMain.propTypes = {
