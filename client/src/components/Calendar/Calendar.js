@@ -60,14 +60,14 @@ export default class CalApp extends React.Component {
 		// let mStart;
 		// let mEnd;
 
-		saveEvent = newEvent => {
-			API.saveSchedule({
-				//calendarId: calendarId,
-				userId: newEvent.userId,
-				start: newEvent.start,
-				end: newEvent.end
-			})
-		}
+		
+		API.saveSchedule({
+			//calendarId: calendarId,
+			userId: newEvent.userId,
+			start: newEvent.start,
+			end: newEvent.end
+		})
+		
 		
 		let newEvent = {
 			calendarId: "",
