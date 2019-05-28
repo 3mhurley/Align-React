@@ -1,4 +1,5 @@
 import auth0 from 'auth0-js';
+import history from '../src/History';
 
 class Auth {
   constructor() {
@@ -16,7 +17,7 @@ class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.signIn = this.signIn.bind(this);
-    this.signOut = this.signOut.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   getProfile() {
@@ -51,7 +52,7 @@ class Auth {
     })
   }
 
-  signOut() {
+  logOut() {
     // clear id token, profile, and expiration
     this.idToken = null;
     this.profile = null;
@@ -63,6 +64,7 @@ class Auth {
       returnTo: window.location.origin
     });
 
+    history.replace('/home');
   }
   isAuthenticated() {
     // Check whether the current time is past the

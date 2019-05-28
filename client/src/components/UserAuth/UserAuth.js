@@ -16,8 +16,8 @@ const styles = theme => ({
 
 
 function UserAuth(props) {
-    const signOut = () => {
-      auth0Client.signOut();
+    const logOut = () => {
+      auth0Client.logOut();
       props.history.replace('/home');
     };
   
@@ -31,7 +31,7 @@ function UserAuth(props) {
           auth0Client.isAuthenticated() &&
           <div>
             <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
-            <Button id="userA" onClick={() => {signOut()}}>Sign Out</Button>
+            <Button id="userA" onClick={() => {logOut()}}>Sign Out</Button>
           </div>
         }
       </div>
