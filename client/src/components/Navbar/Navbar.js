@@ -9,7 +9,7 @@ import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
 import auth0Client from '../../Auth';
 import UserAuth from '../UserAuth/UserAuth';
-import './navbar.scss';
+// import './navbar.scss';
 //styles
 const styles = {
   root: {
