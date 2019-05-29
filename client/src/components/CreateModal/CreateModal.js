@@ -99,12 +99,10 @@ class CreateModal extends React.Component {
 						<Button onClick={this.handleClose} color='secondary'>
 							Cancel
 						</Button>
-						{
-							!auth0Client.isAuthenticated() &&
-							<Button onClick={auth0Client.signIn}color='primary'>
-							Submit
-							</Button>
-						}
+						
+						<Button onClick={this.handleClickOpen}color='primary'>
+						Submit
+						</Button>
 					</DialogActions>
 				</Dialog>
 			</div>
