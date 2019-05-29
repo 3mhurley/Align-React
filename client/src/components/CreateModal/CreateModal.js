@@ -6,11 +6,17 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import auth0Client from "../../Auth";
 import "./createmodal.scss"
+import $ from 'jquery';
 
 class CreateModal extends React.Component {
 	state = {
-		open: false
+		open: false,
+		'first-name': '',
+		'last-name': '',
+		'id': '',
+		'date': ''
 	};
 
 	handleClickOpen = () => {
@@ -20,6 +26,22 @@ class CreateModal extends React.Component {
 	handleClose = () => {
 		this.setState({ open: false });
 	};
+
+	handleSubmit(event) {
+		event.preventDefault();
+		this.setState({
+		});
+
+		$.ajax({
+			type: 'POST',
+			data: {
+				calendarId: '',
+				userId: this.state.email,
+				start: this.state.start
+			},
+		})
+	}
+
 
 	render() {
 		return (
@@ -77,9 +99,12 @@ class CreateModal extends React.Component {
 						<Button onClick={this.handleClose} color='secondary'>
 							Cancel
 						</Button>
-						<Button onClick={this.handleClose} color='primary'>
+						{
+							!auth0Client.isAuthenticated() &&
+							<Button onClick={auth0Client.signIn}color='primary'>
 							Submit
-						</Button>
+							</Button>
+						}
 					</DialogActions>
 				</Dialog>
 			</div>
