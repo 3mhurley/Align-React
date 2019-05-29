@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import TitleButton from "../TitleButton/TitleButton";
-import AboutButton from "../AboutButton/AboutButton";
-import ContactButton from "../ContactButton/ContactButton";
-import DemoButton from "../DemoButton/DemoButton";
-import auth0Client from "../../Auth";
-import UserAuth from "../UserAuth/UserAuth";
+
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import TitleButton from '../TitleButton/TitleButton';
+import AboutButton from '../AboutButton/AboutButton';
+import ContactButton from '../ContactButton/ContactButton';
+import DemoButton from '../DemoButton/DemoButton'
+import auth0Client from '../../Auth';
+import UserAuth from '../UserAuth/UserAuth';
 // import './navbar.scss';
 //styles
 const styles = {
