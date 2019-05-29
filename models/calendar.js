@@ -19,10 +19,6 @@ var CalendarSchema = new Schema({
         trim: true
     },
 
-    end: {
-        type: Number,
-        trim: true
-    }
 });
 
 //
