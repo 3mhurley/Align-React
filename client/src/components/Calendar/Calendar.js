@@ -7,7 +7,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import momentPlugin from "@fullcalendar/moment";
 import moment from "moment";
-import API from "axios";
+import API from "../../utils/API";
 import "./cal.scss";
 
 export default class CalApp extends React.Component {
