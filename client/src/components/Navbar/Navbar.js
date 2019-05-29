@@ -1,58 +1,31 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import TitleButton from '../TitleButton/TitleButton';
-import AboutButton from '../AboutButton/AboutButton';
-import ContactButton from '../ContactButton/ContactButton';
-<<<<<<< HEAD
-import DemoButton from '../DemoButton/DemoButton'
+import React from 'react';
+import {Link, withRouter} from 'react-router-dom';
 import auth0Client from '../../Auth';
-import UserAuth from '../UserAuth/UserAuth';
-import './navbar.scss';
-=======
-import DemoButton from '../DemoButton/DemoButton';
-// import './navbar.scss';
->>>>>>> 3df39fa0bbada3502bd6e75f5ca6ee86072da7cb
 
-
-//styles
-const styles = {
-  root: {
-    flexGrow: 1,
-    background: '#4794B3',
-    color: 'white',
-  },
-  grow: {
-    flexGrow: 1,
-    color: 'white',
-    background: '#4794B3',
-  },
-
-};
-
-class Navbar extends Component {
-  render() {
-  const { classes } = this.props;
+function NavBar(props) {
+    const signOut = () => {
+      auth0Client.signOut();
+      props.history.replace('/');
+    };
+  
     return (
-      <div className={classes.root}>
-          <AppBar position="static" className={classes.root} >
-             <Toolbar>
-              <TitleButton />
-              <AboutButton />
-              <ContactButton />
-              <DemoButton />
-              <UserAuth />
-            </Toolbar>
-           </AppBar>
-      </div>
+      <nav className="navbar navbar-dark bg-primary fixed-top">
+        <Link className="navbar-brand" to="/">
+          Align
+        </Link>
+        {
+          !auth0Client.isAuthenticated() &&
+          <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+        }
+        {
+          auth0Client.isAuthenticated() &&
+          <div>
+            <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+            <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
+          </div>
+        }
+      </nav>
     );
   }
-}
-
-Navbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Navbar);
+  
+  export default withRouter(NavBar);
