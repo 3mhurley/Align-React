@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Redirect } from "react-router-dom";
-// import "./contactBtn.scss"
+import "./contactBtn.scss"
 
 
 const styles = theme => ({
