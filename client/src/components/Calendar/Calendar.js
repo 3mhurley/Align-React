@@ -48,18 +48,6 @@ export default class CalApp extends React.Component {
 	};
 
 	handleSelect = arg => {
-		// let mStart;
-		// let mEnd;
-
-
-		API.saveSchedule({
-			//calendarId: calendarId,
-			userId: newEvent.userId,
-			start: newEvent.start,
-			end: newEvent.end
-		})
-
-
 		let newEvent = {
 			calendarId: "",
 			userId: "",
@@ -99,6 +87,13 @@ export default class CalApp extends React.Component {
 		);
 		// replace events
 		this.state.calendarEvents.splice(index, 1, nEvent);
+		// api it
+		API.saveSchedule({
+			//calendarId: calendarId,
+			userId: arg.event.title,
+			start: arg.event.start,
+			end: arg.event.end
+		});
 	};
 
 	render() {
