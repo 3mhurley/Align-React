@@ -6,7 +6,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import "./createmodal.scss";
+import auth0Client from "../../Auth";
+import "./createmodal.scss"
 import $ from 'jquery';
 
 class CreateModal extends React.Component {
@@ -98,9 +99,12 @@ class CreateModal extends React.Component {
 						<Button onClick={this.handleClose} color='secondary'>
 							Cancel
 						</Button>
-						<Button onClick={this.handleClose} color='primary'>
+						{
+							!auth0Client.isAuthenticated() &&
+							<Button onClick={auth0Client.signIn}color='primary'>
 							Submit
-						</Button>
+							</Button>
+						}
 					</DialogActions>
 				</Dialog>
 			</div>
