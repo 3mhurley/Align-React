@@ -6,8 +6,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import TitleButton from '../TitleButton/TitleButton';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
+<<<<<<< HEAD
+import DemoButton from '../DemoButton/DemoButton'
+import auth0Client from '../../Auth';
+import UserAuth from '../UserAuth/UserAuth';
+import './navbar.scss';
+=======
 import DemoButton from '../DemoButton/DemoButton';
 // import './navbar.scss';
+>>>>>>> 3df39fa0bbada3502bd6e75f5ca6ee86072da7cb
 
 
 //styles
@@ -36,6 +43,7 @@ class Navbar extends Component {
               <AboutButton />
               <ContactButton />
               <DemoButton />
+              <UserAuth />
             </Toolbar>
            </AppBar>
       </div>

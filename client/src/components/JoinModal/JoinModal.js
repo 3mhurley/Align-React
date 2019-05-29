@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import auth0Client from '../../Auth';
 import "./joinmodal.scss"
 
 class JoinModal extends React.Component {
@@ -67,9 +68,12 @@ class JoinModal extends React.Component {
                         <Button onClick={this.handleClose} color="secondary">
                             Cancel
             </Button>
-                        <Button onClick={this.handleClose} color="primary">
-                            Submit
-            </Button>
+            {
+                !auth0Client.isAuthenticated() &&
+                <Button onClick={auth0Client.signIn} color="primary">
+                Submit
+                </Button>
+            }
                     </DialogActions>
                 </Dialog>
             </div>
