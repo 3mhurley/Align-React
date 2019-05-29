@@ -4,16 +4,21 @@ var Schema = mongoose.Schema;
 //schema constructor
 var CalendarSchema = new Schema({
 
-    ownerEmail: {
+    calendarId: {
+        type: string
+    },
+    
+    userId: {
         type: String,
         unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
 
-    startDate: {
+    start: {
         type: Number,
-        trim: true,
+        trim: true
     },
+
 });
 
 //
