@@ -7,14 +7,26 @@ body {
     color: black
 }
 
-#mainInfo {
+#whyInfo {
+    width: 80%;
+    margin: auto;
+    border: none;
+}
+
+#whatInfo {
+    width: 80%;
+    margin: auto;
+}
+#howInfo {
+    width: 80%;
+    margin: auto;
+}
+#whoInfo {
     width: 80%;
     margin: auto;
 }
 
 #buttonDemo {
-    background-color: #4794B3;
-    border: none;
+    border: #4794B3;
     border-width: 0px;
-
 }
