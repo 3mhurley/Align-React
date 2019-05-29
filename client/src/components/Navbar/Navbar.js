@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,19 +10,6 @@ import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
 import auth0Client from '../../Auth';
 import UserAuth from '../UserAuth/UserAuth';
-=======
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import TitleButton from "../TitleButton/TitleButton";
-import AboutButton from "../AboutButton/AboutButton";
-import ContactButton from "../ContactButton/ContactButton";
-import DemoButton from "../DemoButton/DemoButton";
-import auth0Client from "../../Auth";
-import UserAuth from "../UserAuth/UserAuth";
->>>>>>> 0eb88b6448c2b11db30f7403ce7e744f02b60aa2
 // import './navbar.scss';
 //styles
 const styles = {
