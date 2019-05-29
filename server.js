@@ -7,6 +7,7 @@ const logger = require("morgan");
 const routes = require('./routes');
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
+// const info = require('../../client/src/components/ContactMain/Config/Config');
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
@@ -20,6 +21,12 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 
 app.use(routes);
+
+app.use(function (request, response, next) {
+    response.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || process.env.REACT_APP_MONGODB, {useNewUrlParser: true, useCreateIndex: true})
