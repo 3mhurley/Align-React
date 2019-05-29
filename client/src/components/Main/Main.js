@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import CreateModal from "../CreateModal/CreateModal"
-import JoinModal from "../JoinModal/JoinModal"
-import "./main.scss";
-
+import CreateModal from '../CreateModal/CreateModal';
+import JoinModal from '../JoinModal/JoinModal';
+import Navbar from '../Navbar/Navbar';
 
 const styles = theme => ({
  
