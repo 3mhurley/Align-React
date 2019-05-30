@@ -99,7 +99,7 @@ class AvailabilityCard extends React.Component {
 				/>
 				<CardContent>
 					<Typography component='p'>
-						Below is a list of users on this calendar.
+						Below is a list of users on this calendar:
 					</Typography>
 				</CardContent>
 				<CardContent>
