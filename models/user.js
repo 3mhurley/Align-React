@@ -9,9 +9,20 @@ var UserSchema = new Schema({
         trim: true
     },
 
-    password: {
-        type: String
+    firstName: {
+        type: String,
+        trim: true,
     },
+
+    lastName: {
+        type: String,
+        trim: true,
+    },
+
+    calendarId: {
+        type: String,
+        trim: true,
+    }
 
 });
 
