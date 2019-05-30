@@ -16,6 +16,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import API from "../../utils/API";
 
 const styles = theme => ({
 	card: {
@@ -43,8 +44,40 @@ const styles = theme => ({
 	}
 });
 
-class RecipeReviewCard extends React.Component {
-	state = { expanded: false };
+class AvailabilityCard extends React.Component {
+	state = { 
+		expanded: false,
+		calendarId: '',
+		calendarUserList: '',
+		userArray: []
+	};
+
+	loadUsers = id => {
+		API.getUsers(id)
+			.then(res =>
+				this.setState({
+					calendarUserList: res.getUsers
+				})
+				).catch(err => console.log(err));
+	};
+
+	// loadCalId = id => {
+	// 	API.getCalId(id)
+	// 		.then(res => 
+	// 			this.setState({
+	// 				calendarId: res.calendarId
+	// 			})
+	// 		).catch(err => console.log(err));
+	// };
+
+	// loadUsers = id => {
+	// 	API.getUsers(id)
+	// 		.then(res =>
+	// 			this.setState({
+	// 				users: res.users
+	// 			})
+	// 		).catch(err => console.log(err));
+	// };
 
 	handleExpandClick = () => {
 		this.setState(state => ({ expanded: !state.expanded }));
@@ -61,11 +94,11 @@ class RecipeReviewCard extends React.Component {
 					//     R
 					//   </Avatar>
 					// }
-					action={
-						<IconButton>
-							<MoreVertIcon />
-						</IconButton>
-					}
+					// action={
+					// 	<IconButton>
+					// 		<MoreVertIcon />
+					// 	</IconButton>
+					// }
 					title='Availability'
 					subheader='Who and When'
 				/>
@@ -79,7 +112,12 @@ class RecipeReviewCard extends React.Component {
 						Use the table below to see who is in your calendar and when you should meet.
 					</Typography>
 				</CardContent>
-				<CardActions className={classes.actions} disableActionSpacing>
+				<CardContent>
+					<Typography component='p'>
+						CALENDAR ID: {this.state.calendarId}
+					</Typography>
+				</CardContent>
+				{/* <CardActions className={classes.actions} disableActionSpacing>
 					<IconButton aria-label='Add to favorites'>
 						<FavoriteIcon />
 					</IconButton>
@@ -95,9 +133,9 @@ class RecipeReviewCard extends React.Component {
 						aria-label='Show more'>
 						<ExpandMoreIcon />
 					</IconButton>
-				</CardActions>
+				</CardActions> */}
 				<Collapse in={this.state.expanded} timeout='auto' unmountOnExit>
-					<CardContent>
+					{/* <CardContent>
 						<Typography paragraph>Method:</Typography>
 						<Typography paragraph>
 							Heat 1/2 cup of the broth in a pot until simmering, add saffron
@@ -126,15 +164,15 @@ class RecipeReviewCard extends React.Component {
 							Set aside off of the heat to let rest for 10 minutes, and then
 							serve.
 						</Typography>
-					</CardContent>
+					</CardContent> */}
 				</Collapse>
 			</Card>
 		);
 	}
 }
 
-RecipeReviewCard.propTypes = {
+AvailabilityCard.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(AvailabilityCard);
