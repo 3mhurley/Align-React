@@ -9,7 +9,7 @@ var ScheduleSchema = new Schema({
         trim: true
     },
 
-    calendarID: {
+    calendarId: {
         type: String
     },
 
