@@ -18,12 +18,11 @@ const checkJwt = jwt({
     algorithms: ['RS256']
 });
 
-// matches with "/api/newcal"
+// matches with "/api/calendar"
 router.route("/calendar", checkJwt)
-    .get(calendar.findAll)
     .post(calendar.create);
 
-// matches with "/api/newcal:id"
+// matches with "/api/calendar:id"
 router.route('/calendar/:id', checkJwt)
     .get(calendar.findById)
     .put(calendar.update)
