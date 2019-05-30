@@ -45,7 +45,7 @@ class CreateModal extends React.Component {
 			},
 			url: '/calendar'
 		})
-		.then (function() { alert('Your new Calendar ID is: ' + this.state.calendarId) })
+		// .then (function() { alert('Your new Calendar ID is: ' + this.state.calendarId) })
 		// (openAlert({ message: this.state.calendarId, type: success, duration }))
 	}
 
