@@ -15,6 +15,7 @@ export default class CalApp extends React.Component {
 	state = {
 		calendarId: "",
 		calendarUserId: "",
+		calendarUserList: [],
 		calendarScrollTime: moment()
 			.subtract(2, "h")
 			.format("HH:mm:ss"),
@@ -35,31 +36,50 @@ export default class CalApp extends React.Component {
 	};
 
 	componentDidMount() {
-		this.loadCalendar();
+		// Testing
+		sessionStorage.setItem("calId", "0A2J48V5UQ");
+		sessionStorage.setItem("userId", "bob@bob.com");
+		sessionStorage.setItem("userArr", ["bob", "betty"]);
+
+		// Get ID's from session storage
+		let calId = sessionStorage.getItem("calId");
+		let userId = sessionStorage.getItem("userId");
+
+		this.setState({
+			calendarId: calId,
+			calendarUserId: userId
+		});
+
+		this.loadCalendar(this.state.calendarId, this.loadEvents);
 	}
 
 	//load calendar by id from DB
-	loadCalendar = id => {
+	loadCalendar = (id, cb) => {
 		API.getCalendar(id)
 			.then(res =>
 				this.setState({
-					calendarId: res.calendarId,
 					calendarDefaultDate: res.start
 				})
 			)
-			.catch(err => console.log(err));
+			.catch(err => console.log(err))
+			.then(cb());
 	};
 
 	loadEvents = id => {
 		API.getSchedule(id)
 			.then(res =>
-				this.setState({
-					title: res.userId,
-					start: res.start,
-					end: res.end,
+				res.map(event => ({
+					title: event.userId,
+					start: event.start,
+					end: event.end,
 					editable: true,
 					eventStartEditable: true,
 					eventResizableFromStart: true
+				}))
+			)
+			.then(event =>
+				this.setState({
+					calendarEvents: event
 				})
 			)
 			.catch(err => console.log(err));
