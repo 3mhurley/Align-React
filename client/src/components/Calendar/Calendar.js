@@ -13,17 +13,23 @@ import "./cal.scss";
 export default class CalApp extends React.Component {
 	calendarComponentRef = React.createRef();
 	state = {
+		calendarId: "",
+		calendarUserId: "",
 		calendarScrollTime: moment()
 			.subtract(2, "h")
 			.format("HH:mm:ss"),
 		calendarSelectable: true,
 		calendarWeekends: true,
+		calendarDefaultDate: new Date(),
 		calendarEvents: [
 			// initial event data
 			{
 				title: "Sample Event",
 				start: new Date(),
-				end: new Date()
+				end: new Date(),
+				editable: true,
+				eventStartEditable: true,
+				eventResizableFromStart: true
 			}
 		]
 	};
@@ -37,10 +43,22 @@ export default class CalApp extends React.Component {
 		API.getCalendar(id)
 			.then(res =>
 				this.setState({
-					title: res.data,
-					start: res.data,
-					end: res.data,
+					calendarId: res.calendarId,
+					calendarDefaultDate: res.start
+				})
+			)
+			.catch(err => console.log(err));
+	};
+
+	loadEvents = id => {
+		API.getSchedule(id)
+			.then(res =>
+				this.setState({
+					title: res.userId,
+					start: res.start,
+					end: res.end,
 					editable: true,
+					eventStartEditable: true,
 					eventResizableFromStart: true
 				})
 			)
@@ -121,6 +139,7 @@ export default class CalApp extends React.Component {
 						defaultView='timeGridWeek'
 						ref={this.calendarComponentRef}
 						weekends={this.state.calendarWeekends}
+						defaultDate={this.state.calendarDefaultDate}
 						events={this.state.calendarEvents}
 						eventColor='#4794B3'
 						select={this.handleSelect}
