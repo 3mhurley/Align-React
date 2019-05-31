@@ -43,8 +43,8 @@ class CreateModal extends React.Component {
 				userId: this.state.email,
 				start: this.state.start
 			},
-			url: '/calendar'
-		})
+			url: 'api/calendar'
+		});
 		// .then (function() { alert('Your new Calendar ID is: ' + this.state.calendarId) })
 		// (openAlert({ message: this.state.calendarId, type: success, duration }))
 	}
