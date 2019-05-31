@@ -7,7 +7,9 @@ import TitleButton from '../TitleButton/TitleButton';
 import AboutButton from '../AboutButton/AboutButton';
 import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
+import auth0Client from '../../Auth';
 import UserAuth from '../UserAuth/UserAuth';
+// import './navbar.scss';
 //styles
 const styles = {
 	root: {

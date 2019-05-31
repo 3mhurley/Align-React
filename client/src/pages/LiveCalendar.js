@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import CalApp from "../components/Calendar/Calendar";
+import SubmitCalButton from "../components/SubmitCalButton/SubmitCalButton";
 import Navbar from "../components/Navbar/Navbar";
 import auth0Client from '.././Auth';
 import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
@@ -66,6 +67,9 @@ class Calendar extends Component {
 						<Grid item xs={3}>
 							<div>
 								<WidgetThingy />
+							</div>
+							<div>
+								<SubmitCalButton />
 							</div>
 						</Grid>
 					</Grid>
