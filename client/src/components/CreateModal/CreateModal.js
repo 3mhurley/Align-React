@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,8 +8,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import auth0Client from "../../Auth";
+import API from '../../utils/API';
 import "./createmodal.scss";
-import $ from 'jquery';
+
+// import $ from 'jquery';
 
 
 const cryptoRandomString = require("crypto-random-string");
@@ -16,38 +19,40 @@ const cryptoRandomString = require("crypto-random-string");
 class CreateModal extends React.Component {
 	state = {
 		open: false,
-		'first-name': '',
-		'last-name': '',
-		'email': '',
-		calendarId: cryptoRandomString(10),
-		'date': ''
+		calendar: {
+			userId: '',
+			startDate: '',
+		}
 	};
 
 	handleClickOpen = () => {
 		this.setState({ open: true });
 	};
 
+	handleInputChange = (name, value) => {
+		const calendar = { ...this.state.calendar };
+		calendar[name] = value;
+		this.setState({ calendar });
+	}
+
 	handleClose = () => {
 		this.setState({ open: false });
 	};
 
-	handleSubmit(event) {
-		event.preventDefault();
-		this.setState({
-		});
-
-		$.ajax({
-			method: 'POST',
-			data: {
-				calendarId: this.state.calendarId,
-				userId: this.state.email,
-				start: this.state.start
-			},
-			url: 'api/calendar'
-		});
-		// .then (function() { alert('Your new Calendar ID is: ' + this.state.calendarId) })
-		// (openAlert({ message: this.state.calendarId, type: success, duration }))
+	handleSubmit = (auth = false) =>  {
+		const payload = { ...this.state.calendar, calendarId: cryptoRandomString(10) }
+		API.saveCalendar(payload)
+			.then(response => {
+				console.log(response);
+				if (auth) {
+					return auth0Client.signIn();
+				}
+				this.props.history.push('/calendar');
+			})
+			.catch(error => console.error(error));
 	}
+
+
 
 
 	render() {
@@ -69,33 +74,42 @@ class CreateModal extends React.Component {
 						<DialogContentText>
 							Fill out the information below to start.
 						</DialogContentText>
-						<TextField
+						{/* <TextField
+							name="first"
 							margin='dense'
 							id='first-name'
 							label='First Name'
 							type='string'
 							fullWidth
-						/>
+							/>
 						<TextField
 							margin='dense'
 							id='last-name'
 							label='Last Name'
 							type='string'
 							fullWidth
-						/>
+							/> */}
 						<TextField
+							onChange={ e => this.handleInputChange(e.target.name, e.target.value) }
+							name="userId"
+							value={ this.state.calendar.userId }
 							margin='dense'
 							id='email'
 							label='Email Address'
 							type='email'
 							fullWidth
-						/>
+							InputLabelProps={{
+								shrink: true,
+							}}
+							/>
 						<TextField
-						margin="dense"
+							onChange={ e => this.handleInputChange(e.target.name, e.target.value) }
+							name="startDate"
+							value={ this.state.calendar.startDate }
+							margin="dense"
 							id="date"
 							label="Start Date"
 							type="date"
-							defaultValue="Calendar Start Date"
 							InputLabelProps={{
 								shrink: true,
 							}}
@@ -107,10 +121,11 @@ class CreateModal extends React.Component {
 							Cancel
 						</Button>
 						{
-							!auth0Client.isAuthenticated() &&
-							<Button onClick={auth0Client.signIn}color='primary'>
-							Submit
-							</Button>
+							auth0Client.isAuthenticated()
+								?	<Button onClick={this.handleSubmit}>Submit</Button>
+								:	<Button onClick={ () => this.handleSubmit()} color='primary'>
+										Log In and Submit
+									</Button>
 						}
 					</DialogActions>
 				</Dialog>
@@ -119,4 +134,4 @@ class CreateModal extends React.Component {
 	}
 }
 
-export default (CreateModal);
+export default withRouter(CreateModal);

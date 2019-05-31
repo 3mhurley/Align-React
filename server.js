@@ -54,7 +54,8 @@ app.use(morgan('combined'));
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || process.env.REACT_APP_MONGODB, {useNewUrlParser: true, useCreateIndex: true})
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/align', {useNewUrlParser: true, useCreateIndex: true})
     .then(() => console.log('mongodb connected'))
     .catch(err => console.error(err));
     
