@@ -43,5 +43,12 @@ export default {
     //saves calendar to db
     saveSchedule: function(schedData) {
         return axios.post("api/schedule", schedData);
+    },
+
+    //USERS AXIOS
+
+    //gets users by calendarId
+    findUsers: function(calendarId) {
+        return axios.get("api/users", calendarId);
     }
 };
