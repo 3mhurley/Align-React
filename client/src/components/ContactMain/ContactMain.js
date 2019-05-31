@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
@@ -48,9 +48,10 @@ class MyForm extends Component {
     }
 
    
-    handleSubmit = (e) => {
+    handleSubmit = (event) => {
         // your submit logic
-        e.preventDefault();
+        console.log("About to send email")
+        event.preventDefault();
         const name = document.getElementById('name').value;
         const message = document.getElementById('message').value;
         const email = document.getElementById('email').value;
@@ -59,32 +60,32 @@ class MyForm extends Component {
         console.log(email);
         console.log(message);
 
-        axios({
-            method: "POST",
-            url: "http://localhost:3001/send",
-            data: {
+            axios.post('/rpc/send_contact_email', {
+              data: {
               name: name,
               email: email,
               message: message
-            }
-          }).then((response) => {
-            if (response.data.msg === 'success') {
+              }
+            }).then((response) => {
+              console.log("Here is the response", response.data)
+            if (response.msg === 'success') {
               alert("Message has been sent.");
               this.resetForm()
       
-            }else if (response.data.msg === 'fail') {
+            }else if (response.data === 'fail') {
               alert("Message failed to send.")
             }
       
           })
     }
 
-    resetForm() {
+    resetForm = () => {
         document.getElementById('contact-form').reset();
     }
  
     render() {
         const { name, email, message } = this.state;
+     
         const { classes } = this.props;
         return (
             <div className = {classes.root}>
@@ -97,7 +98,7 @@ class MyForm extends Component {
                 className={classes.container}
                 id="contact-form"
                 method="POST"
-                action="/contact"
+                action="/rpc/send_contact_email"
             >
                   <TextValidator
                     label="Name"

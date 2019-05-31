@@ -19,9 +19,9 @@ const checkJwt = jwt({
 });
 
 // matches with "/api/newcal"
-router.route("/calendar", checkJwt)
-    .get(calendar.findAll)
-    .post(calendar.create);
+// router.route("/calendar", checkJwt)
+//     .get(calendar.findAll)
+//     .post(calendar.create);
 
 // matches with "/api/newcal:id"
 router.route('/calendar/:id', checkJwt)

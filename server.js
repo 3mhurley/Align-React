@@ -56,11 +56,6 @@ app.use(morgan('combined'));
 
 app.use(routes);
 
-app.use(function (request, response, next) {
-    response.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || process.env.REACT_APP_MONGODB, {useNewUrlParser: true, useCreateIndex: true})

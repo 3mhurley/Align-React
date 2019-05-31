@@ -127,6 +127,7 @@ export default class CalApp extends React.Component {
 						eventResize={this.handleResize}
 						scrollTime={this.state.calendarScrollTime}
 					/>
+					
 				</div>
 			</div>
 		);

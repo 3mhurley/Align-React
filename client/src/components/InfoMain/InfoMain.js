@@ -19,7 +19,7 @@ const styles = theme => ({
     color: 'white',
     overflow: 'hidden',
   
-    
+  
   },
   paper: {
     marginTop: 80,
