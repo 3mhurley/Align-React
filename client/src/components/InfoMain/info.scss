@@ -1,10 +1,29 @@
 body {
-    background-color: #4794B3;
+    background-color:white;
     background-size: cover;
 }
 
-.text {
-    color: black
+h1, p {
+    color: #4794B3;
+}
+
+#container1 {
+    background-color: white;
+}
+#container2 {
+    background-color: white;
+}
+#container3 {
+    background-color: white;
+}
+#container4 {
+    background-color: white;
+    padding-bottom: 80px;
+}
+#btnContainer {
+    background-color: white;
+    text-align: center;
+
 }
 
 #whyInfo {
@@ -26,7 +45,3 @@ body {
     margin: auto;
 }
 
-#buttonDemo {
-    border: #4794B3;
-    border-width: 0px;
-}
