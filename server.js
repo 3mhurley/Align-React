@@ -37,8 +37,6 @@ app.use(cors())
 // Log HTTP requests
 app.use(morgan('combined'));
 
-
-
 // // Below info will be between get endpoints and post endpoint
 // const checkJwt = jwt({
 //     secret: jwksRsa.expressJwtSecret({

@@ -7,15 +7,19 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import auth0Client from "../../Auth";
-import "./createmodal.scss"
+import "./createmodal.scss";
 import $ from 'jquery';
+
+
+const cryptoRandomString = require("crypto-random-string");
 
 class CreateModal extends React.Component {
 	state = {
 		open: false,
 		'first-name': '',
 		'last-name': '',
-		'id': '',
+		'email': '',
+		calendarId: cryptoRandomString(10),
 		'date': ''
 	};
 
@@ -33,13 +37,16 @@ class CreateModal extends React.Component {
 		});
 
 		$.ajax({
-			type: 'POST',
+			method: 'POST',
 			data: {
-				calendarId: '',
+				calendarId: this.state.calendarId,
 				userId: this.state.email,
 				start: this.state.start
 			},
-		})
+			url: 'api/calendar'
+		});
+		// .then (function() { alert('Your new Calendar ID is: ' + this.state.calendarId) })
+		// (openAlert({ message: this.state.calendarId, type: success, duration }))
 	}
 
 

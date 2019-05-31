@@ -9,31 +9,30 @@ import "./contactsubmitBtn.scss";
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 const styles = theme => ({
  
-    root: {
-      flexGrow: 1,
-      background: '#4794B3',
-      textAlign: 'center',
-      marginTop: 100,
-      color: 'white',
-      overflow: 'hidden',
-      fontSize: 18
-      
-    }
-  });
-
+  root: {
+    flexGrow: 1,
+    background: 'white',
+    textAlign: 'center',
+    marginTop: 100,
+    color: 'white',
+    overflow: 'hidden',
+    fontSize: 18
+    
+  }
+});
 
 class MyForm extends Component {
- 
-    state = {
-        name: '',
-        email: '',
-        message: '',
-    }
- 
-    handleNameChange = (event) => {
-        const name  = event.target.value;
-        this.setState({ name })
-    }
+
+  state = {
+    name: '',
+    email: '',
+    message: '',
+  };
+
+  handleNameChange = (event) => {
+    const name  = event.target.value;
+    this.setState({ name })
+  }
 
     handleEmailChange = (event) => {
         const email = event.target.value;

@@ -84,14 +84,11 @@ router.post("/", (req, res, next) => {
     let message = req.body.data.message
     let content = `name: ${name} \n email: ${email} \n message: ${message} `
 
-    console.log(name);
-    console.log(email);
-    console.log(message);
-
+   
     let mail = {
         from: 'alignteamdu@yahoo.com',
         to: 'alignteamdu@yahoo.com',
-        subject: 'New New Message from Align Contact Form',
+        subject: 'New Message from Align Contact Form',
         text: content
     }
 

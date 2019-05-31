@@ -5,12 +5,12 @@ var Schema = mongoose.Schema;
 var CalendarSchema = new Schema({
 
     calendarId: {
-        type: String
+        type: String,
+        unique: true
     },
-    
+
     userId: {
         type: String,
-        unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
 
