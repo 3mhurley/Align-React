@@ -101,7 +101,7 @@ class JoinModal extends React.Component {
 						</Button>
 						{
 							!auth0Client.isAuthenticated() &&
-							<Button onClick={auth0Client.signIn} color='primary'>Secured Log In</Button>
+							<Button onClick={auth0Client.signIn} onSubmit={() => this.handleSubmit} color='primary'>Secured Log In</Button>
 						}
 						{
 							<Button onClick={() => this.handleSubmit()} color='primary'>
