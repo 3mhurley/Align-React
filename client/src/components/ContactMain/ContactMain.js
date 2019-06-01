@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import "./contact.scss";
-
-
+import "./contactsubmitBtn.scss";
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 const styles = theme => ({
- 
+
   root: {
     flexGrow: 1,
     background: 'white',
@@ -18,10 +17,11 @@ const styles = theme => ({
     color: 'white',
     overflow: 'hidden',
     fontSize: 18
-    
+
   }
 });
-class ContactForm extends Component {
+
+class MyForm extends Component {
 
   state = {
     name: '',
@@ -29,107 +29,126 @@ class ContactForm extends Component {
     message: '',
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
-  };
+  handleNameChange = (event) => {
+    const name = event.target.value;
+    this.setState({ name })
+  }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleEmailChange = (event) => {
+    const email = event.target.value;
+    this.setState({ email })
+
+  }
+
+  handleMessageChange = (event) => {
+    const message = event.target.value;
+    this.setState({ message })
+
+  }
+
+
+  handleSubmit = (event) => {
+    // your submit logic
+    console.log("About to send email")
+    event.preventDefault();
     const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
     const email = document.getElementById('email').value;
 
-    const validateEmail = () => {
-        const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!email.match(filter)) {
-        alert("Please enter a valid email.");
-        } else {
-     
-    axios({
-      method: "POST",
-      url:"http://localhost:3000/send",
+    console.log(name);
+    console.log(email);
+    console.log(message);
+
+    axios.post('/rpc/send_contact_email', {
       data: {
         name: name,
         email: email,
         message: message
       }
     }).then((response) => {
-      if (response.data.msg === 'success') {
+      console.log("Here is the response", response.data)
+      if (response.msg === 'success') {
         alert("Message has been sent.");
         this.resetForm()
 
-      }else if (response.data.msg === 'fail') {
+      } else if (response.data === 'fail') {
         alert("Message failed to send.")
       }
 
     })
-
-   
   }
-}
-validateEmail();
 
-  }
   resetForm = () => {
     document.getElementById('contact-form').reset();
-
   }
 
   render() {
+    const { name, email, message } = this.state;
     const { classes } = this.props;
     return (
-    <div className ={classes.root}>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-          <form className={classes.container} noValidate autoComplete="off" id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-            <TextField
-              id="name"
-              label="Name"
-              className={classes.textField}
-              value={this.state.name}
-              onChange={this.handleChange('name')}
-              margin="normal"
-              variant="filled"
-            />
-            <br></br>
-
-            <TextField
-              required
-              id="email"
-              label="Email"
-              className={classes.textField}
-              type="email"
-              autoComplete="email"
-              margin="normal"
-              variant="filled"
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <ValidatorForm
+              ref="form"
+              onSubmit={this.handleSubmit}
+              onError={errors => console.log(errors)}
+              className={classes.container}
+              id="contact-form"
+              method="POST"
+              action="/rpc/send_contact_email"
+            >
+              <TextValidator
+                label="Name"
+                onChange={this.handleNameChange}
+                name="name"
+                value={name}
+                validators={['required']}
+                errorMessages={['this field is required']}
+                id="name"
+                margin="normal"
+                variant="filled"
               />
-            <br></br>
-
-
-            <TextField
-              id="message"
-              label="Write message here"
-              multiline
-              rows="8"
-              className={classes.textField}
-              margin="normal"
-              variant="filled"
-            />
-          <br></br>
-
-            <Button type="submit" color="primary">Submit</Button>
-
-          </form>
-       </Grid>
-    </Grid>
-    </div>
-  );
+              <br></br>
+              <TextValidator
+                label="Email"
+                onChange={this.handleEmailChange}
+                name="email"
+                value={email}
+                validators={['required', 'isEmail']}
+                errorMessages={['this field is required', 'email is not valid']}
+                id="email"
+                margin="normal"
+                variant="filled"
+              />
+              <br></br>
+              <TextValidator
+                label="Message"
+                onChange={this.handleMessageChange}
+                name="message"
+                value={message}
+                validators={['required']}
+                errorMessages={['this field is required']}
+                id="message"
+                margin="normal"
+                variant="filled"
+                multiline
+                rows="8"
+              />
+              <br></br>
+              <Button type="submit" id="contactsubmitBtn">Send</Button>
+            </ValidatorForm>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 }
-}
-    
-ContactForm.propTypes = {
+
+MyForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ContactForm);
+export default withStyles(styles)(MyForm);
+
 

@@ -9,6 +9,7 @@ import ContactButton from '../ContactButton/ContactButton';
 import DemoButton from '../DemoButton/DemoButton'
 import auth0Client from '../../Auth';
 import UserAuth from '../UserAuth/UserAuth';
+import NavbarLogo from '../NavbarLogo/NavbarLogo'
 // import './navbar.scss';
 //styles
 const styles = {
@@ -30,6 +31,7 @@ class Navbar extends Component {
 			<div className={classes.root}>
 				<AppBar position='static' className={classes.root}>
 					<Toolbar>
+						<NavbarLogo />
 						<TitleButton />
 						<AboutButton />
 						<ContactButton />

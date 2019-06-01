@@ -1,37 +1,38 @@
 {
-  "name": "align",
-  "version": "0.1.0",
-  "private": true,
-  "main": "server.js",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.0",
-    "express-jwt": "^5.3.1",
-    "helmet": "^3.18.0",
-    "if-env": "^1.0.4",
-    "jwks-rsa": "^1.5.1",
-    "moment": "^2.24.0",
-    "mongoose": "^5.5.8",
-    "morgan": "^1.9.1",
-    "react-material-ui-form-validator": "^2.0.8"
-  },
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "seed": "node scripts/seedDB.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  }
+	"name": "align",
+	"version": "0.1.0",
+	"private": true,
+	"main": "server.js",
+	"dependencies": {
+		"axios": ">=0.19.0",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"dotenv": "^8.0.0",
+		"express": "^4.17.0",
+		"express-jwt": "^5.3.1",
+		"helmet": "^3.18.0",
+		"if-env": "^1.0.4",
+		"jwks-rsa": "^1.5.1",
+		"moment": "^2.24.0",
+		"mongoose": "^5.5.8",
+		"morgan": "^1.9.1",
+		"nodemailer": "^6.2.1",
+		"react-material-ui-form-validator": "^2.0.8"
+	},
+	"scripts": {
+		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start:prod": "node server.js",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+		"client": "cd client && npm run start",
+		"install": "cd client && npm install",
+		"build": "cd client && npm run build",
+		"heroku-postbuild": "npm run build",
+		"seed": "node scripts/seedDB.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^4.1.0",
+		"nodemon": "^1.18.7"
+	}
 }

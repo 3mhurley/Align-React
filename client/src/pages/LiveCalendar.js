@@ -12,12 +12,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
+// import Container from "@material-ui/core/Container";
 import CalApp from "../components/Calendar/Calendar";
 import SubmitCalButton from "../components/SubmitCalButton/SubmitCalButton";
 import Navbar from "../components/Navbar/Navbar";
 import auth0Client from '.././Auth';
 import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
+import "../../src/components/Calendar/livecal.scss"
 
 const flex = {
 	display: "flex",
@@ -32,15 +33,17 @@ const styles = theme => ({
 	},
 	paper: {
 		...flex,
-		// width: "90%",
+		// width: "1000",
 		padding: theme.spacing.unit * 2,
-		// margin: theme.spacing.unit,
-		textAlign: "center"
+		margin: theme.spacing.unit,
+		textAlign: "center",
+		// margin: 'auto',
+		// alignItems: 'center'
 	},
 	card: {
 		...flex,
 		// width: "90%",
-		padding: theme.spacing.unit * 2,
+		// padding: theme.spacing.unit * 2,
 		// margin: theme.spacing.unit
 	}
 });
@@ -56,22 +59,38 @@ class Calendar extends Component {
 				</div>
 				<br />
 				<div className={classes.root}>
-					<Grid container spacing={16}>
-						<Grid item xs={9}>
-							<Paper className={classes.paper}>
-								<div>
+					<Grid container spacing={24}>
+						<Grid item xs={6}>
+							<Paper className={classes.paper} id="liveCal" >
+								<div id="calCont">
 									<CalApp />
 								</div>
 							</Paper>
 						</Grid>
-						<Grid item xs={3}>
-							<div>
+						<Grid item xs={6} >
+							<div id="widgetThingy">
 								<WidgetThingy />
 							</div>
 							<div>
 								<SubmitCalButton />
 							</div>
 						</Grid>
+							{/* <WidgetThingy /> */}
+
+							{/* <Grid item xs={3} direction="row"> */}
+							{/* <Paper className={classes.paper}> */}
+							{/* <div id="widgetThingy">
+								<WidgetThingy />
+							</div> */}
+							{/* </Paper> */}
+							{/* </Grid> */}
+
+						{/* </Grid> */}
+						{/* <Grid item xs={6}>
+							<div id="widgetThingy">
+								<WidgetThingy />
+							</div>
+						</Grid> */}
 					</Grid>
 				</div>
 				{/* <Card className={classes.root}>

@@ -50,5 +50,10 @@ export default {
     //gets users by calendarId
     findUsers: function(calendarId) {
         return axios.get("api/users", calendarId);
+    },
+
+    //posts user with calendarId
+    createUser: function(userData) {
+        return axios.post("api/users", userData);
     }
 };

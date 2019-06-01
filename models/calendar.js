@@ -6,7 +6,8 @@ var CalendarSchema = new Schema({
 
     calendarId: {
         type: String,
-        unique: true
+        unique: true,
+        required: true,
     },
 
     userId: {
@@ -14,14 +15,13 @@ var CalendarSchema = new Schema({
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
 
-    start: {
-        type: Number,
+    startDate: {
+        type: String,
         trim: true
     },
 
 });
 
-//
 var Calendar = mongoose.model("Calendar", CalendarSchema);
 
 //export user model

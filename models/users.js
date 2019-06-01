@@ -4,17 +4,12 @@ var Schema = mongoose.Schema;
 //schema constructor
 var UserSchema = new Schema({
 
-    email: {
+    userId: {
         type: String,
-        trim: true
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
 
-    firstName: {
-        type: String,
-        trim: true,
-    },
-
-    lastName: {
+    userName: {
         type: String,
         trim: true,
     },
@@ -27,7 +22,7 @@ var UserSchema = new Schema({
 });
 
 //
-var Users = mongoose.model(UserSchema);
+var Users = mongoose.model('User', UserSchema);
 
 //export user model
 module.exports = Users;
