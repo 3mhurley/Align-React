@@ -24,11 +24,13 @@ const styles = theme => ({
 
 class MyForm extends Component {
 
-  state = {
+  initialState = {
     name: '',
     email: '',
     message: '',
   };
+
+  state = this.initialState
 
   handleNameChange = (event) => {
     const name = event.target.value;
@@ -47,6 +49,10 @@ class MyForm extends Component {
 
   }
 
+  handleReset = () => {
+    this.setState(() => this.initialState)
+  }
+
 
   handleSubmit = (event) => {
     // your submit logic
@@ -56,9 +62,6 @@ class MyForm extends Component {
     const message = document.getElementById('contactFormMessage').value;
     const email = document.getElementById('contactFormEmail').value;
 
-    console.log(name);
-    console.log(email);
-    console.log(message);
 
     axios.post('/rpc/send_contact_email', {
       data: {
@@ -67,21 +70,13 @@ class MyForm extends Component {
         message: message
       }
     }).then((response) => {
-      console.log("Here is the response", response.data)
-      if (response.msg === 'success') {
-        alert("Message has been sent.");
-        this.resetForm()
-
-      } else if (response.data === 'fail') {
-        alert("Message failed to send.")
-      }
-
+      console.log("Here is the response", response.data);
+    
     })
+    alert("Your message has been sent!")
+    this.handleReset();
   }
 
-  resetForm = () => {
-    document.getElementById('contact-form').reset();
-  }
 
   render() {
     const { name, email, message } = this.state;
@@ -102,8 +97,9 @@ class MyForm extends Component {
           <Grid item xs={12}> 
             <ValidatorForm
               ref="form"
-              onSubmit={this.handleSubmit}
+              onSubmit={this.handleSubmit} 
               onError={errors => console.log(errors)}
+              // onReset={this.handleReset}
               className={classes.container}
               id="contact-form"
               method="POST"
@@ -144,7 +140,7 @@ class MyForm extends Component {
                 margin="normal"
                 variant="filled"
                 multiline
-                rows="8"
+                rows="7"
               />
               <br></br>
               <Button type="submit" id="contactsubmitBtn">Send</Button>

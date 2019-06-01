@@ -10,9 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import auth0Client from "../../Auth"
 import API from "../../utils/API"
 import "./createmodal.scss"
-
 const cryptoRandomString = require("crypto-random-string")
-
 class CreateModal extends React.Component {
 	state = {
 		open: false,
@@ -126,5 +124,4 @@ class CreateModal extends React.Component {
 		)
 	}
 }
-
 export default withRouter(CreateModal)
