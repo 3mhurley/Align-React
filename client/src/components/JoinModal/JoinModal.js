@@ -75,9 +75,6 @@ class JoinModal extends React.Component {
                             label='Calendar ID'
                             type='string'
                             fullWidth
-                            InputLabelProps={{
-								shrink: true,
-							}}
                         />
                         <TextField
                             margin='dense'

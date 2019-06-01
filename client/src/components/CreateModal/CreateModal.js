@@ -95,9 +95,6 @@ class CreateModal extends React.Component {
 							label='Email Address'
 							type='email'
 							fullWidth
-							InputLabelProps={{
-								shrink: true,
-							}}
 							/>
 						<TextField
 							onChange={ e => this.handleInputChange(e.target.name, e.target.value) }
