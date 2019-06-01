@@ -18,7 +18,7 @@ import SubmitCalButton from "../components/SubmitCalButton/SubmitCalButton";
 import Navbar from "../components/Navbar/Navbar";
 import auth0Client from '.././Auth';
 import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
-import "./livecal.scss";
+import "../../src/components/Calendar/livecal.scss"
 
 const flex = {
 	display: "flex",
