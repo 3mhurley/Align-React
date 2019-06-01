@@ -55,10 +55,6 @@ class MyForm extends Component {
         const message = document.getElementById('message').value;
         const email = document.getElementById('email').value;
 
-        console.log(name);
-        console.log(email);
-        console.log(message);
-
             axios.post('/rpc/send_contact_email', {
               data: {
               name: name,
@@ -67,13 +63,13 @@ class MyForm extends Component {
               }
             }).then((response) => {
               console.log("Here is the response", response.data)
-            if (response.msg === 'success') {
-              alert("Message has been sent.");
-              this.resetForm()
-      
-            }else if (response.data === 'fail') {
-              alert("Message failed to send.")
-            }
+            // if (response.msg === 'success') {
+            //   alert("Message has been sent.");
+            //   this.resetForm()
+              this.resetForm();
+            // }else if (response.data === 'fail') {
+            //   alert("Message failed to send.")
+            // }
       
           })
     }
