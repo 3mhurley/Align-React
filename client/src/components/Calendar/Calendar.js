@@ -171,15 +171,9 @@ export default class CalApp extends React.Component {
 
 	initCalendar() {
 		if (this.state.error) {
-<<<<<<< HEAD
-			return <div>Error: {this.error.message}</div>
-		} else if (!isLoaded) {
-			return <div>Loading...</div>
-=======
 			return <div>Error: {this.state.error.message}</div>;
 		} else if (!this.state.isLoaded) {
 			return <div>Loading...</div>;
->>>>>>> 2e8fdf52204fe497b26898b2552c9b4d9aed660c
 		} else {
 			return this.loadCalendar();
 		}
