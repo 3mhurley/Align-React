@@ -15,6 +15,7 @@ const jwksRsa = require('jwks-rsa');
 const routes = require('./routes');
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
+// const info = require('../../client/src/components/ContactMain/Config/Config');
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
@@ -52,6 +53,7 @@ app.use(morgan('combined'));
 // });
 
 app.use(routes);
+
 
 // Connect to the Mongo DB
 mongoose.connect(

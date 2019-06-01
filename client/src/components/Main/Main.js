@@ -27,7 +27,6 @@ class FrontMain extends Component {
   render() {
   const { classes } = this.props;
     return (
-      <body>
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
@@ -43,7 +42,6 @@ class FrontMain extends Component {
           </Grid>
       </Grid>
     </div>
-    </body>
 
     );
 
