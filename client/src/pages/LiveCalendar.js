@@ -29,7 +29,6 @@ const flex = {
 const styles = theme => ({
 	root: {
 		flexGrow: 1,
-		maxWidth: 1000
 	},
 	paper: {
 		...flex,
@@ -59,7 +58,7 @@ class Calendar extends Component {
 				</div>
 				<br />
 				<div className={classes.root}>
-					<Grid container spacing={24}>
+					<Grid container spacing={6}>
 						<Grid item xs={6}>
 							<Paper className={classes.paper} id="liveCal" >
 								<div id="calCont">
@@ -67,30 +66,20 @@ class Calendar extends Component {
 								</div>
 							</Paper>
 						</Grid>
-						<Grid item xs={6} >
+
+						<Grid item xs={3}/> 
+						<Grid item xs={1}/> 
+
+						<Grid item xs={2} >
 							<div id="widgetThingy">
 								<WidgetThingy />
 							</div>
+						
 							<div>
 								<SubmitCalButton />
 							</div>
 						</Grid>
-							{/* <WidgetThingy /> */}
-
-							{/* <Grid item xs={3} direction="row"> */}
-							{/* <Paper className={classes.paper}> */}
-							{/* <div id="widgetThingy">
-								<WidgetThingy />
-							</div> */}
-							{/* </Paper> */}
-							{/* </Grid> */}
-
-						{/* </Grid> */}
-						{/* <Grid item xs={6}>
-							<div id="widgetThingy">
-								<WidgetThingy />
-							</div>
-						</Grid> */}
+					
 					</Grid>
 				</div>
 				{/* <Card className={classes.root}>
