@@ -6,6 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import momentPlugin from "@fullcalendar/moment";
+
 import moment from "moment";
 import API from "../../utils/API";
 import "./cal.scss";
@@ -13,6 +14,8 @@ import "./cal.scss";
 export default class CalApp extends React.Component {
 	calendarComponentRef = React.createRef();
 	state = {
+		error: null,
+		isLoaded: false,
 		calendarId: "",
 		calendarUserId: "",
 		calendarUserList: [],
@@ -37,9 +40,9 @@ export default class CalApp extends React.Component {
 
 	componentDidMount() {
 		// Testing
-		sessionStorage.setItem("calId", "0A2J48V5UQ");
-		sessionStorage.setItem("userId", "bob@bob.com");
-		sessionStorage.setItem("userArr", ["bob", "betty"]);
+		// sessionStorage.setItem("calId", "0A2J48V5UQ");
+		// sessionStorage.setItem("userId", "bob@bob.com");
+		// sessionStorage.setItem("userArr", ["bob", "betty"]);
 
 		// Get ID's from session storage
 		let calId = sessionStorage.getItem("calId");
@@ -50,22 +53,26 @@ export default class CalApp extends React.Component {
 			calendarUserId: userId
 		});
 
-		this.loadCalendar(this.state.calendarId, this.loadEvents);
+		this.getTheCalendar(this.state.calendarId);
 	}
 
 	//load calendar by id from DB
-	loadCalendar = (id, cb) => {
+	getTheCalendar = id => {
 		API.getCalendar(id)
-			.then(res =>
+			.then(res => {
 				this.setState({
 					calendarDefaultDate: res.start
-				})
-			)
-			.catch(err => console.log(err))
-			.then(cb());
+				});
+				this.getTheEvents();
+			})
+			.catch(error => {
+				this.setState({
+					error
+				});
+			});
 	};
 
-	loadEvents = id => {
+	getTheEvents = id => {
 		API.getSchedule(id)
 			.then(res =>
 				res.map(event => ({
@@ -77,41 +84,45 @@ export default class CalApp extends React.Component {
 					eventResizableFromStart: true
 				}))
 			)
-			.then(event =>
-				this.setState({
-					calendarEvents: event
-				})
-			)
-			.catch(err => console.log(err));
+			.then(
+				result => {
+					this.setState({
+						isLoaded: true,
+						calendarEvents: result
+					});
+				},
+				error => {
+					this.setState({
+						error
+					});
+				}
+			);
 	};
 
 	handleSelect = arg => {
-		let newEvent = {
-			calendarId: "",
-			userId: "",
+		const payload = {
+			calendarId: this.state.calendarId,
+			userId: this.state.userId,
 			start: arg.start,
 			end: arg.end
 		};
 
-		API.saveSchedule({
-			//calendarId: calendarId,
-			userId: newEvent.userId,
-			start: newEvent.start,
-			end: newEvent.end
-		});
-
-		this.setState({
-			// add new event data
-			calendarEvents: this.state.calendarEvents.concat({
-				// creates a new array
-				title: newEvent.userId,
-				start: newEvent.start,
-				end: newEvent.end,
-				editable: true,
-				eventStartEditable: true,
-				eventResizableFromStart: true
+		API.saveSchedule(payload)
+			.then(response => {
+				this.setState({
+					// add new event data
+					calendarEvents: this.state.calendarEvents.concat({
+						// creates a new array
+						title: payload.userId,
+						start: payload.start,
+						end: payload.end,
+						editable: true,
+						eventStartEditable: true,
+						eventResizableFromStart: true
+					})
+				});
 			})
-		});
+			.catch(error => console.error(error));
 	};
 
 	handleResize = arg => {
@@ -126,15 +137,49 @@ export default class CalApp extends React.Component {
 		// replace events
 		this.state.calendarEvents.splice(index, 1, nEvent);
 		// api it
-		API.saveSchedule({
-			//calendarId: calendarId,
-			userId: arg.event.title,
-			start: arg.event.start,
-			end: arg.event.end
-		});
+
+		// API.saveSchedule({
+		// 	//calendarId: calendarId,
+		// 	userId: arg.event.title,
+		// 	start: arg.event.start,
+		// 	end: arg.event.end
+		// })
+
+		// const payload = {
+		// 	calendarId: this.state.calendarId,
+		// 	userId: this.state.userId,
+		// 	start: arg.start,
+		// 	end: arg.end
+		// }
+		// API.saveSchedule(payload)
+		// 	.then(response => {
+		// 		this.setState({
+		// 			// add new event data
+		// 			calendarEvents: this.state.calendarEvents.concat({
+		// 				// creates a new array
+		// 				title: payload.userId,
+		// 				start: payload.start,
+		// 				end: payload.end,
+		// 				editable: true,
+		// 				eventStartEditable: true,
+		// 				eventResizableFromStart: true
+		// 			})
+		// 		});
+		// 	})
+		// 	.catch(error => console.error(error))
 	};
 
-	render() {
+	initCalendar() {
+		if (this.state.error) {
+			return <div>Error: {this.state.error.message}</div>;
+		} else if (!this.state.isLoaded) {
+			return <div>Loading...</div>;
+		} else {
+			return this.loadCalendar();
+		}
+	}
+
+	loadCalendar() {
 		return (
 			<div className='cal-app'>
 				<div className='cal-app-top'>
@@ -166,9 +211,12 @@ export default class CalApp extends React.Component {
 						eventResize={this.handleResize}
 						scrollTime={this.state.calendarScrollTime}
 					/>
-					
 				</div>
 			</div>
 		);
+	}
+
+	render() {
+		return this.initCalendar();
 	}
 }
