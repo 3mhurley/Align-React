@@ -89,10 +89,13 @@ class JoinModal extends React.Component {
 							name='userId'
 							value={this.state.join.userId}
 							margin='dense'
-							id='name'
+							id='cal-id'
 							label='Email Address'
-							type='email'
+							type='string'
 							fullWidth
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
 						/>
 					</DialogContent>
 					<DialogActions>
