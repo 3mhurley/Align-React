@@ -19,11 +19,11 @@ const checkJwt = jwt({
 });
 
 // matches with "/api/calendar"
-router.route("/calendar", checkJwt)
+router.route("/", checkJwt)
     .post(calendar.create);
 
 // matches with "/api/calendar:id"
-router.route('/calendar/:id', checkJwt)
+router.route('/:id', checkJwt)
     .get(calendar.findById)
     .put(calendar.update)
     .delete(calendar.remove);

@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
 
     //owner calendar
-    findUsers: function(req, res) {
+    find: function(req, res) {
         db.Users
             .find( { calendarId: this.state.calendarId } )
             .then(dbDoc => res.json(dbDoc))
