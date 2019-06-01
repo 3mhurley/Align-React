@@ -114,4 +114,4 @@ class JoinModal extends React.Component {
     }
 }
 
-export default (JoinModal);
+export default withRouter(JoinModal);
