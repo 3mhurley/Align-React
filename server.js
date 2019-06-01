@@ -5,6 +5,7 @@ const express = require("express");
 // const mongojs = require("mongojs");
 // const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const path = require("path");
 // const logger = require("morgan");
 const cors = require('cors');
 const helmet = require('helmet');
@@ -52,6 +53,7 @@ app.use(morgan('combined'));
 //     algorithms: ['RS256']
 // });
 
+app.use(express.static(path.join(__dirname+"/client/build")));
 app.use(routes);
 
 
@@ -60,13 +62,23 @@ mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost:27017/align', {useNewUrlParser: true, useCreateIndex: true})
     .then(() => console.log('mongodb connected'))
     .catch(err => console.error(err));
-    
+
+    // Connect to the Mongo DB
+    // mongoose
+    // .connect(process.env.MONGODB_URI || process.env.REACT_APP_MONGODB, {
+    //     useNewUrlParser: true,
+    //     useCreateIndex: true
+    // })
+    // .then(() => console.log("mongodb connected"))
+    // .catch(err => console.error(err));
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') { // throw errors in development to force you to fix them
     process.on('unhandledRejection', error => new Error(error));
 } else { // only log errors in prod
     process.on('unhandledRejection', error => console.error(error));
 }
+
+
 
 //port 3000
 app.listen(PORT, function() {
