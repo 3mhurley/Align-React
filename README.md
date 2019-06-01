@@ -23,7 +23,7 @@ We are a team of developers from Denver, CO who enjoy solving big issues with si
 | React | Nodemailer |
 | FullCalendar.js | AuthO |
 
-## Deployment on [Heroku] (https://align-app.herokuapp.com/)
+## Deployment on [Heroku](https://align-app.herokuapp.com/).
 
 ### Developement Team
 #### Evan Hurley

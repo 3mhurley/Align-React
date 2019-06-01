@@ -83,9 +83,9 @@ class CreateModal extends React.Component {
 							label='Email Address'
 							type='email'
 							fullWidth
-							InputLabelProps={{
-								shrink: true
-							}}
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
 						/>
 						<TextField
 							onChange={e => this.handleInputChange(e.target.name, e.target.value)}
@@ -95,9 +95,9 @@ class CreateModal extends React.Component {
 							id='date'
 							label='Start Date'
 							type='date'
-							InputLabelProps={{
-								shrink: true
-							}}
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
 							fullWidth
 						/>
 					</DialogContent>
