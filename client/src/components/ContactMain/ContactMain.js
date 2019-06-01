@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -13,7 +14,7 @@ const styles = theme => ({
     flexGrow: 1,
     background: 'white',
     textAlign: 'center',
-    marginTop: 100,
+    marginTop: 50,
     color: 'white',
     overflow: 'hidden',
     fontSize: 18
@@ -84,6 +85,16 @@ class MyForm extends Component {
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
+          <Typography variant="h6" id="header">
+            <h1>
+              CONTACT US
+            </h1>
+            <h4>
+              Have a question about Align? Fill out the form and we'll be in touch shortly!
+            </h4>
+          </Typography>
+          </Grid>
+          <Grid item xs={12}> 
             <ValidatorForm
               ref="form"
               onSubmit={this.handleSubmit} 
