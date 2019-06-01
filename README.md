@@ -12,3 +12,22 @@ Here are some simple steps to get started: 1. Demo our app below! You can get a 
 
 ##The Who
 We are a team of developers from Denver, CO who enjoy solving big issues with simple solutions. We believe Align does just that. If you enjoy using our app and you feel like it is beneficial to you personally or to your team, feel free to create an account. If you just need a one-off scheduling solution that’s perfectly fine too. Welcome!
+
+
+## Technologies
+| Frontend | Backend |
+|---------- | ---------- |
+| HTML | Nodejs |
+| Material UI | Express |
+| SCSS | mongoDB (mongoose) |
+| React | Nodemailer |
+| FullCalendar.js | AuthO |
+
+
+
+###Developement Team
+####Evan Hurley
+####Jordan Choquette
+####Giancarlo Tzquierdo
+####Brandon Anderson
+####Anne Wilson
