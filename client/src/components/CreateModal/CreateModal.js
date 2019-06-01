@@ -10,9 +10,7 @@ import DialogTitle from "@material-ui/core/DialogTitle"
 import auth0Client from "../../Auth"
 import API from "../../utils/API"
 import "./createmodal.scss"
-
 const cryptoRandomString = require("crypto-random-string")
-
 class CreateModal extends React.Component {
 	state = {
 		open: false,
@@ -73,15 +71,21 @@ class CreateModal extends React.Component {
 							type='string'
 							fullWidth
 						/>
-						<TextField margin='dense' id='last-name' label='Last Name' type='string' fullWidth />
+						<TextField 
+							margin='dense' 
+							id='last-name' 
+							label='Last Name' 	
+							type='string' 
+							fullWidth 
+						/>
 						<TextField
 							onChange={e => this.handleInputChange(e.target.name, e.target.value)}
 							name='userId'
 							value={this.state.calendar.userId}
 							margin='dense'
-							id='email'
+							id='cal-id'
 							label='Email Address'
-							type='email'
+							type='string'
 							fullWidth
 							// InputLabelProps={{
 							// 	shrink: true
@@ -95,9 +99,9 @@ class CreateModal extends React.Component {
 							id='date'
 							label='Start Date'
 							type='date'
-							// InputLabelProps={{
-							// 	shrink: true
-							// }}
+							InputLabelProps={{
+								shrink: true
+							}}
 							fullWidth
 						/>
 					</DialogContent>
@@ -105,18 +109,19 @@ class CreateModal extends React.Component {
 						<Button onClick={this.handleClose} color='secondary'>
 							Cancel
 						</Button>
-						{auth0Client.isAuthenticated() ? (
-							<Button onClick={this.handleSubmit}>Submit</Button>
-						) : (
+						{
+							!auth0Client.isAuthenticated() && 
+							<Button onClick={auth0Client.signIn} onSubmit={() => this.handleSubmit()} color='primary'>Secured Log In</Button>
+						}
+						{
 							<Button onClick={() => this.handleSubmit()} color='primary'>
 								Log In and Submit
 							</Button>
-						)}
+						}
 					</DialogActions>
 				</Dialog>
 			</div>
 		)
 	}
 }
-
 export default withRouter(CreateModal)

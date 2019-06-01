@@ -7,7 +7,7 @@ import JoinModal from '../JoinModal/JoinModal';
 import Navbar from '../Navbar/Navbar';
 import Logo from '../Logo/Logo';
 const styles = theme => ({
- 
+
   root: {
     flexGrow: 1,
     background: '#4794B3',
