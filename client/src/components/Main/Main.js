@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import CreateModal from '../CreateModal/CreateModal';
 import JoinModal from '../JoinModal/JoinModal';
 import Navbar from '../Navbar/Navbar';
-
+import Logo from '../Logo/Logo';
 const styles = theme => ({
  
   root: {
@@ -30,19 +30,16 @@ class FrontMain extends Component {
       <div className={classes.root}>
         <Grid container spacing={24}>
           <Grid item xs={12}>
-            <h1>Align</h1>
+            <Logo />
           </Grid>
           <Grid item xs={6} className="createModal">
               <CreateModal />
-
           </Grid>
           <Grid item xs={6} className="joinModal">
               <JoinModal />
-
           </Grid>
       </Grid>
     </div>
-
     );
 
   }
