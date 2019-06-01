@@ -70,16 +70,10 @@ class MyForm extends Component {
       }
     }).then((response) => {
       console.log("Here is the response", response.data);
-      // this.resetForm();
-      // if (response.msg === 'success') {
-      //   alert("Message has been sent.");
-      //   this.resetForm()
-
-      // } else if (response.data === 'fail') {
-      //   alert("Message failed to send.")
-      // }
-
+    
     })
+    alert("Your message has been sent!")
+    this.handleReset();
   }
 
 
@@ -92,9 +86,9 @@ class MyForm extends Component {
           <Grid item xs={12}>
             <ValidatorForm
               ref="form"
-              onSubmit={this.handleSubmit}
+              onSubmit={this.handleSubmit} 
               onError={errors => console.log(errors)}
-              onReset={this.handleReset}
+              // onReset={this.handleReset}
               className={classes.container}
               id="contact-form"
               method="POST"

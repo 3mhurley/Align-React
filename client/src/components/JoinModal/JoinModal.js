@@ -48,4 +48,72 @@ class JoinModal extends React.Component {
 			.catch(error => console.error(error))
 	}
 
+	render() {
+		return (
+			<div>
+				<Button id='joinBtn' variant='outlined' color='primary' onClick={this.handleClickOpen}>
+					JOIN CALENDAR
+				</Button>
+				<Dialog
+					open={this.state.open}
+					onClose={this.handleClose}
+					aria-labelledby='form-dialog-title'
+				>
+					<DialogTitle id='form-dialog-title'>Join A Calendar</DialogTitle>
+					<DialogContent>
+						<DialogContentText>
+							If you have been invited to join a calendar enter your information.
+						</DialogContentText>
+						<TextField
+							onChange={e => this.handleInputChange(e.target.name, e.target.value)}
+							name='calendarId'
+							value={this.state.join.userId}
+							margin='dense'
+							id='cal-id'
+							label='Calendar ID'
+							type='string'
+							fullWidth
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
+						/>
+						<TextField 
+							margin='dense' 
+							id='guest-name' 
+							label='Guest Name' 
+							type='string' 
+							fullWidth
+						/>
+						<TextField
+							onChange={e => this.handleInputChange(e.target.name, e.target.value)}
+							name='userId'
+							value={this.state.join.userId}
+							margin='dense'
+							id='cal-id'
+							label='Email Address'
+							type='string'
+							fullWidth
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
+						/>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={this.handleClose} color='secondary'>
+							Cancel
+						</Button>
+						{auth0Client.isAuthenticated() ? (
+							<Button onClick={this.handleSubmit}>Submit</Button>
+						) : (
+							<Button onClick={() => this.handleSubmit()} color='primary'>
+								Log In and Submit
+							</Button>
+						)}
+					</DialogActions>
+				</Dialog>
+			</div>
+		)
+	}
+}
+
 export default withRouter(JoinModal)
