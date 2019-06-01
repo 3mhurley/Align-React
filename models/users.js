@@ -27,7 +27,7 @@ var UserSchema = new Schema({
 });
 
 //
-var User = mongoose.model(UserSchema);
+var Users = mongoose.model('User', UserSchema);
 
 //export user model
-module.exports = User;
+module.exports = Users;

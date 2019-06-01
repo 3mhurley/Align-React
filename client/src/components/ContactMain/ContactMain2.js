@@ -11,15 +11,14 @@ const styles = theme => ({
  
     root: {
       flexGrow: 1,
-      background: '#4794B3',
+      background: 'white',
       textAlign: 'center',
-      // paddingTop: 207,
-      // paddingBottom: 327,
+
       marginTop: 100,
       color: 'white',
       overflow: 'hidden',
-      fontSize: 18
-      
+      fontSize: 20,
+      padding: 0,
     }
   });
 
