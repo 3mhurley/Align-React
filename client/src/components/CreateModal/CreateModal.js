@@ -11,9 +11,6 @@ import auth0Client from "../../Auth";
 import API from '../../utils/API';
 import "./createmodal.scss";
 
-// import $ from 'jquery';
-
-
 const cryptoRandomString = require("crypto-random-string");
 
 class CreateModal extends React.Component {
@@ -74,7 +71,7 @@ class CreateModal extends React.Component {
 						<DialogContentText>
 							Fill out the information below to start.
 						</DialogContentText>
-						{/* <TextField
+						<TextField
 							name="first"
 							margin='dense'
 							id='first-name'
@@ -88,7 +85,7 @@ class CreateModal extends React.Component {
 							label='Last Name'
 							type='string'
 							fullWidth
-							/> */}
+							/>
 						<TextField
 							onChange={ e => this.handleInputChange(e.target.name, e.target.value) }
 							name="userId"
