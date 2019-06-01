@@ -25,7 +25,9 @@ We are a team of developers from Denver, CO who enjoy solving big issues with si
 
 ## Deployment on [Heroku](https://align-app.herokuapp.com/).
 
-### Developement Team
+
+### Development Team:
+
 #### Evan Hurley
 #### Jordan Choquette
 #### Giancarlo Tzquierdo
