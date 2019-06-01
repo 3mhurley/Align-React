@@ -1,20 +1,31 @@
 
-#name{
-    background-color: grey;
+#contactFormName{
+    margin-top: 7px;
+    // background-color: grey;
 }
 
-#email {
-    background-color: grey;
+#contactFormEmail {
+    margin-top: 7px;
+    // background-color: grey;
 }
 
-#message {
-    margin-top: -20px;
+#contactFormMessage {
+    margin-top: 7px;
     width: 600px;
     height: 300px;
-    background-color: grey;
+    //background-color: grey;
 }
 
 #header {
     width: 80%;
     margin: auto;
+}
+
+#contact-form {
+    border: 2px solid black;
+    margin-right: 150px;
+    margin-left: 150px;
+    margin-bottom: 50px;
+    // margin-top: 10px;
+    padding-top: 25px;
 }

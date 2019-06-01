@@ -52,9 +52,9 @@ class MyForm extends Component {
     // your submit logic
     console.log("About to send email")
     event.preventDefault();
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
-    const email = document.getElementById('email').value;
+    const name = document.getElementById('contactFormName').value;
+    const message = document.getElementById('contactFormMessage').value;
+    const email = document.getElementById('contactFormEmail').value;
 
     console.log(name);
     console.log(email);
@@ -116,7 +116,7 @@ class MyForm extends Component {
                 value={name}
                 validators={['required']}
                 errorMessages={['this field is required']}
-                id="name"
+                id="contactFormName"
                 margin="normal"
                 variant="filled"
               />
@@ -128,7 +128,7 @@ class MyForm extends Component {
                 value={email}
                 validators={['required', 'isEmail']}
                 errorMessages={['this field is required', 'email is not valid']}
-                id="email"
+                id="contactFormEmail"
                 margin="normal"
                 variant="filled"
               />
@@ -140,7 +140,7 @@ class MyForm extends Component {
                 value={message}
                 validators={['required']}
                 errorMessages={['this field is required']}
-                id="message"
+                id="contactFormMessage"
                 margin="normal"
                 variant="filled"
                 multiline
