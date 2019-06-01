@@ -73,11 +73,17 @@ class JoinModal extends React.Component {
 							label='Calendar ID'
 							type='string'
 							fullWidth
-							InputLabelProps={{
-								shrink: true
-							}}
+							// InputLabelProps={{
+							// 	shrink: true
+							// }}
 						/>
-						<TextField margin='dense' id='guest-name' label='Guest Name' type='string' />
+						<TextField 
+							margin='dense' 
+							id='guest-name' 
+							label='Guest Name' 
+							type='string' 
+							fullWidth
+						/>
 						<TextField
 							onChange={e => this.handleInputChange(e.target.name, e.target.value)}
 							name='userId'
