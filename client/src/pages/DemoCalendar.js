@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
+
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -12,12 +13,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // import Container from "@material-ui/core/Container";
-import CalApp from "../components/DemoCalendar/DemoCalendar";
+import CalApp from "../components/DemoCalendar/Calendar";
 import SubmitCalButton from "../components/DemoCalendar/SubmitCalButton/SubmitCalButton";
 import Navbar from "../components/Navbar/Navbar";
-import auth0Client from "../Auth";
+import auth0Client from '../Auth';
 import WidgetThingy from "../components/DemoCalendar/WidgetThingy/WidgetThingy";
-import "../../src/components/Calendar/livecal.scss";
+import "../../src/components/Calendar/livecal.scss"
 
 const flex = {
 	display: "flex",
@@ -27,26 +28,26 @@ const flex = {
 
 const styles = theme => ({
 	root: {
-		flexGrow: 1
+		flexGrow: 1,
 	},
 	paper: {
 		...flex,
 		// width: "1000",
 		padding: theme.spacing.unit * 2,
 		margin: theme.spacing.unit,
-		textAlign: "center"
+		textAlign: "center",
 		// margin: 'auto',
 		// alignItems: 'center'
 	},
 	card: {
-		...flex
+		...flex,
 		// width: "90%",
 		// padding: theme.spacing.unit * 2,
 		// margin: theme.spacing.unit
 	}
 });
 
-class DemoCalendar extends Component {
+class Calendar extends Component {
 	render() {
 		const { classes } = this.props;
 		return (
@@ -59,18 +60,18 @@ class DemoCalendar extends Component {
 				<div className={classes.root}>
 					<Grid container spacing={6}>
 						<Grid item xs={6}>
-							<Paper className={classes.paper} id='liveCal'>
-								<div id='calCont'>
+							<Paper className={classes.paper} id="liveCal" >
+								<div id="calCont">
 									<CalApp />
 								</div>
 							</Paper>
 						</Grid>
 
-						<Grid item xs={3} />
-						<Grid item xs={1} />
+						<Grid item xs={3}/>
+						<Grid item xs={1}/>
 
-						<Grid item xs={2}>
-							<div id='widgetThingy'>
+						<Grid item xs={2} >
+							<div id="widgetThingy">
 								<WidgetThingy />
 							</div>
 
@@ -78,6 +79,7 @@ class DemoCalendar extends Component {
 								<SubmitCalButton />
 							</div>
 						</Grid>
+
 					</Grid>
 				</div>
 			</div>
@@ -85,8 +87,8 @@ class DemoCalendar extends Component {
 	}
 }
 
-DemoCalendar.propTypes = {
+Calendar.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(DemoCalendar);
+export default withStyles(styles)(Calendar);
