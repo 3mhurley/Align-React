@@ -14,10 +14,10 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 // import Container from "@material-ui/core/Container";
 import CalApp from "../components/Calendar/Calendar";
-import SubmitCalButton from "../components/SubmitCalButton/SubmitCalButton";
+import SubmitCalButton from "../components/Calendar/SubmitCalButton/SubmitCalButton";
 import Navbar from "../components/Navbar/Navbar";
 import auth0Client from '.././Auth';
-import WidgetThingy from "../components/WidgetThingy/WidgetThingy";
+import WidgetThingy from "../components/Calendar/WidgetThingy/WidgetThingy";
 import "../../src/components/Calendar/livecal.scss"
 
 const flex = {
@@ -67,28 +67,21 @@ class Calendar extends Component {
 							</Paper>
 						</Grid>
 
-						<Grid item xs={3}/> 
-						<Grid item xs={1}/> 
+						<Grid item xs={3}/>
+						<Grid item xs={1}/>
 
 						<Grid item xs={2} >
 							<div id="widgetThingy">
 								<WidgetThingy />
 							</div>
-						
+
 							<div>
 								<SubmitCalButton />
 							</div>
 						</Grid>
-					
+
 					</Grid>
 				</div>
-				{/* <Card className={classes.root}>
-					<CardContent className={classes.card}>
-						<div>
-							<CalApp />
-						</div>
-					</CardContent>
-				</Card> */}
 			</div>
 		);
 	}

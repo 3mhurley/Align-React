@@ -50,53 +50,54 @@ export default class CalApp extends React.Component {
 
 		this.setState({
 			calendarId: calId,
-			calendarUserId: userId
+			calendarUserId: userId,
+			isLoaded: true
 		});
 
-		this.getTheCalendar(this.state.calendarId);
+		// this.getTheCalendar(this.state.calendarId);
 	}
 
 	//load calendar by id from DB
 	getTheCalendar = id => {
-		API.getCalendar(id)
-			.then(res => {
-				this.setState({
-					calendarDefaultDate: res.start
-				});
-				this.getTheEvents();
-			})
-			.catch(error => {
-				this.setState({
-					error
-				});
-			});
+		// API.getCalendar(id)
+		// 	.then(res => {
+		// 		this.setState({
+		// 			calendarDefaultDate: res.start
+		// 		});
+		// 		this.getTheEvents();
+		// 	})
+		// 	.catch(error => {
+		// 		this.setState({
+		// 			error
+		// 		});
+		// 	});
 	};
 
 	getTheEvents = id => {
-		API.getSchedule(id)
-			.then(res =>
-				res.map(event => ({
-					title: event.userId,
-					start: event.start,
-					end: event.end,
-					editable: true,
-					eventStartEditable: true,
-					eventResizableFromStart: true
-				}))
-			)
-			.then(
-				result => {
-					this.setState({
-						isLoaded: true,
-						calendarEvents: result
-					});
-				},
-				error => {
-					this.setState({
-						error
-					});
-				}
-			);
+		// API.getSchedule(id)
+		// 	.then(res =>
+		// 		res.map(event => ({
+		// 			title: event.userId,
+		// 			start: event.start,
+		// 			end: event.end,
+		// 			editable: true,
+		// 			eventStartEditable: true,
+		// 			eventResizableFromStart: true
+		// 		}))
+		// 	)
+		// 	.then(
+		// 		result => {
+		// 			this.setState({
+		// 				isLoaded: true,
+		// 				calendarEvents: result
+		// 			});
+		// 		},
+		// 		error => {
+		// 			this.setState({
+		// 				error
+		// 			});
+		// 		}
+		// 	);
 	};
 
 	handleSelect = arg => {
@@ -107,22 +108,22 @@ export default class CalApp extends React.Component {
 			end: arg.end
 		};
 
-		API.saveSchedule(payload)
-			.then(response => {
-				this.setState({
-					// add new event data
-					calendarEvents: this.state.calendarEvents.concat({
-						// creates a new array
-						title: payload.userId,
-						start: payload.start,
-						end: payload.end,
-						editable: true,
-						eventStartEditable: true,
-						eventResizableFromStart: true
-					})
-				});
+		// API.saveSchedule(payload)
+		// 	.then(response => {
+		this.setState({
+			// add new event data
+			calendarEvents: this.state.calendarEvents.concat({
+				// creates a new array
+				title: payload.userId,
+				start: payload.start,
+				end: payload.end,
+				editable: true,
+				eventStartEditable: true,
+				eventResizableFromStart: true
 			})
-			.catch(error => console.error(error));
+		});
+		// })
+		// .catch(error => console.error(error));
 	};
 
 	handleResize = arg => {

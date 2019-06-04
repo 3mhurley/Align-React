@@ -16,7 +16,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import API from "../../utils/API";
+import API from "../../../utils/API";
 
 const styles = theme => ({
 	card: {
@@ -45,7 +45,7 @@ const styles = theme => ({
 });
 
 class AvailabilityCard extends React.Component {
-	state = { 
+	state = {
 		expanded: false,
 		calendarId: '',
 		calendarUserList: [],
@@ -63,7 +63,7 @@ class AvailabilityCard extends React.Component {
 
 	// loadCalId = id => {
 	// 	API.getCalId(id)
-	// 		.then(res => 
+	// 		.then(res =>
 	// 			this.setState({
 	// 				calendarId: res.calendarId
 	// 			})
@@ -113,7 +113,7 @@ class AvailabilityCard extends React.Component {
 					</Typography>
 				</CardContent>
 				<Collapse in={this.state.expanded} timeout='auto' unmountOnExit>
-					
+
 				</Collapse>
 			</Card>
 		);
